@@ -1,28 +1,40 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, continueRender, delayRender} from 'remotion';
+import {AbsoluteFill, Audio, Sequence, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, continueRender, delayRender} from 'remotion';
 import {TransitionSeries, linearTiming} from '@remotion/transitions';
 import {slide} from '@remotion/transitions/slide';
 import {fade} from '@remotion/transitions/fade';
 
 type Move = 'zoom' | 'panL' | 'pop' | 'zoomL' | 'zoomR' | 'pulse';
-const SCENES: {img: string; dur: number; move: Move; text: string | null}[] = [
-  {img: 'reel1.png', dur: 75, move: 'zoom', text: '¿Cómo consigues más reseñas en Google?'},
-  {img: 'reel2.png', dur: 75, move: 'panL', text: 'Tus clientes salen contentos… y se les olvida opinar.'},
-  {img: 'reel3.png', dur: 75, move: 'pop', text: 'Con un letrero kausrovi, es más fácil.'},
-  {img: 'reel4.png', dur: 66, move: 'zoomL', text: 'Acercan su celular…'},
-  {img: 'reel5.png', dur: 66, move: 'zoomR', text: '…o escanean el código.'},
-  {img: 'reel6.png', dur: 78, move: 'zoom', text: 'Y llegan directo a tu página de reseñas.'},
-  {img: 'reel7.png', dur: 72, move: 'panL', text: 'Más fácil para tu cliente.'},
-  {img: 'reel8.png', dur: 105, move: 'pulse', text: null},
+const FPS = 30, T = 8, DELAY = 0.5, TOTAL_S = 24;
+// speech = [start, end] of each line in the voice file (seconds), measured from the audio
+const RAW: {img: string; move: Move; text: string | null; speech: [number, number]}[] = [
+  {img: 'reel1.png', move: 'zoom', text: '¿Cómo consigues más reseñas en Google?', speech: [0.0, 2.17]},
+  {img: 'reel2.png', move: 'panL', text: 'Tus clientes salen contentos… y se les olvida opinar.', speech: [3.47, 7.11]},
+  {img: 'reel3.png', move: 'pop', text: 'Con un letrero kausrovi, ¡es mucho más fácil!', speech: [7.5, 10.4]},
+  {img: 'reel4.png', move: 'zoomL', text: 'Acercan su celular…', speech: [10.78, 11.88]},
+  {img: 'reel5.png', move: 'zoomR', text: '…o escanean el código.', speech: [12.45, 13.52]},
+  {img: 'reel6.png', move: 'zoom', text: 'Y llegan directo a tu página de reseñas.', speech: [13.92, 16.16]},
+  {img: 'reel7.png', move: 'panL', text: 'Más fácil para tu cliente.', speech: [16.5, 17.97]},
+  {img: 'reel8.png', move: 'pulse', text: null, speech: [18.38, 20.6]},
 ];
-const T = 8;
-export const TOTAL = SCENES.reduce((a, s) => a + s.dur, 0) - T * (SCENES.length - 1);
+// scene i starts (transition begins) just before its line; scene 2 starts at the sigh (2.8 s)
+const SCENE_START_S = [0, 2.8, 7.5, 10.78, 12.45, 13.92, 16.5, 18.38];
+const cuts = SCENE_START_S.map((t, i) => (i === 0 ? 0 : Math.round((t + DELAY) * FPS) - T));
+export const TOTAL = TOTAL_S * FPS;
+const SCENES = RAW.map((r, i) => {
+  const start = cuts[i];
+  const next = i < RAW.length - 1 ? cuts[i + 1] : TOTAL;
+  const dur = next - start + (i < RAW.length - 1 ? T : 0);
+  const say0 = Math.round((r.speech[0] + DELAY) * FPS) - start;
+  const say1 = Math.round((r.speech[1] + DELAY) * FPS) - start;
+  return {...r, dur, say0, say1};
+});
 
 const font = new FontFace('Lexend', `url(${staticFile('lexend600.woff2')})`, {weight: '600'});
 const handle = delayRender('font');
 font.load().then((f) => { document.fonts.add(f); continueRender(handle); });
 
-const Scene: React.FC<{img: string; dur: number; move: Move; text: string | null}> = ({img, dur, move, text}) => {
+const Scene: React.FC<{img: string; dur: number; move: Move; text: string | null; say0: number; say1: number}> = ({img, dur, move, text, say0, say1}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const p = f / dur;
@@ -44,9 +56,9 @@ const Scene: React.FC<{img: string; dur: number; move: Move; text: string | null
         <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 380}}>
           <div style={{maxWidth: 900, background: 'rgba(21,35,48,0.85)', borderRadius: 40, padding: '20px 36px', textAlign: 'center',
             fontFamily: 'Lexend', fontWeight: 600, fontSize: 54, lineHeight: 1.18, color: '#fff',
-            opacity: interpolate(f, [4, 10], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>
+            opacity: interpolate(f, [Math.max(0, say0 - 4), Math.max(1, say0 + 2)], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>
             {words.map((w, i) => {
-              const s = 6 + i * 3;
+              const s = say0 + Math.round(((say1 - say0) * 0.85 * i) / Math.max(1, words.length));
               const o = interpolate(f, [s, s + 5], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
               return <span key={i} style={{opacity: o, display: 'inline-block', transform: `translateY(${(1 - o) * 10}px)`, marginRight: 14}}>{w}</span>;
             })}
@@ -70,10 +82,10 @@ export const Reel: React.FC<{hasVoice: boolean}> = ({hasVoice}) => {
         })}
       </TransitionSeries>
       <Audio src={staticFile('music.wav')} volume={(f) => {
-        const base = hasVoice ? 0.25 : 0.6;
+        const base = hasVoice ? 0.22 : 0.6;
         return base * interpolate(f, [0, 15, durationInFrames - 30, durationInFrames], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
       }} />
-      {hasVoice && <Audio src={staticFile('voz.mp3')} volume={1} />}
+      {hasVoice && <Sequence from={Math.round(DELAY * FPS)}><Audio src={staticFile('voz.mp3')} volume={1} /></Sequence>}
     </AbsoluteFill>
   );
 };
