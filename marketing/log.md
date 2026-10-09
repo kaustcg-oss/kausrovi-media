@@ -8,3 +8,9 @@
 ## Enfoque nuevo: cafés de matcha y restaurantes pequeños locales
 - Lista en `prospects-matcha-restaurantes.csv` (17 negocios), ordenada por ruta y distancia.
 - Búsqueda de matcha: los matcha de Valle Dorado quedan lejos (≈4 km); los del centro son cafés pequeños con pocas reseñas, buenos para un primer letrero.
+
+## 2026-10-08 · Búsqueda de pilates, dental y veterinarias
+- Agregados 27 prospectos a `prospects.csv` (7 pilates, 9 dentales, 11 veterinarias), ordenados por zona: Zona Centro, Obrera, Valle Dorado, Aviación, Jalisco, Punta Banda, entre otras. Estado: nuevo.
+- Tier A (prioridad, 11): Estudio C, Sundra, Dental Health & Implant, Dra. Kim Arellano, California Dental, Dental Más Fácil, Better Smile, Field, Valvet, Veterinaria Del Centro, Masvet, Ánima, Hospital Veterinario, Pet Love (14 en total con los de arriba).
+- Pendiente: verificar horarios de veterinarias que dicen 24 h (Valvet, Arroyo, Arroyo Coral) y teléfonos sin confirmar (MERKABA usa lada CDMX).
+- Próximo paso: elegir 5 de tier A para la primera ronda y preparar borradores de contacto.
