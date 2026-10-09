@@ -1,0 +1,3 @@
+{"name":"kausrovi-reel","private":true,"type":"module",
+ "scripts":{"assets":"for i in 1-hook:1 2-problema:2 3-producto:3 4-acercar:4 5-escanear:5 6-resultado:6 7-beneficio:7 8-cierre:8; do cp ../reels/reel-${i%%:*}.png public/reel${i##*:}.png; done","render":"remotion render src/index.ts KausroviReel out/kausrovi-reel.mp4"},
+ "dependencies":{"remotion":"4.0.534","@remotion/cli":"4.0.534","@remotion/transitions":"4.0.534","react":"19.1.0","react-dom":"19.1.0"}}
