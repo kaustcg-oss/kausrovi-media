@@ -2,37 +2,102 @@
 <title>Índice Norte · Norte Regulatorio</title><meta name="description" content="Índice Norte de Presión por Retiros: medida mensual y reproducible de la actividad de retiros de dispositivos de la FDA.">
 <meta property="og:title" content="Índice Norte · Norte Regulatorio"><meta property="og:description" content="Índice Norte de Presión por Retiros: medida mensual y reproducible de la actividad de retiros de dispositivos de la FDA."><meta property="og:type" content="website"><meta property="og:url" content="https://norteregulatorio.com/es/nrpi/"><meta property="og:image" content="https://norteregulatorio.com/assets/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://norteregulatorio.com/es/nrpi/">
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:wght@500;600&display=swap"><link rel="stylesheet" href="../../assets/site.css"></head><body><header class="top"><div class="wrap"><a class="brand" href="../../es/"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,1 21,22 12,17 3,22" fill="var(--accent)"/><polygon points="12,1 12,17 3,22" fill="var(--signal)" opacity=".85"/></svg>Norte Regulatorio</a><nav class="links"><a href="../../es/#lookup">Buscar empresa</a><a href="../../es/issues/">Ediciones</a><a href="../../es/nrpi/">Índice Norte</a><a href="../../es/market/">Radar de mercado</a><a href="../../es/#plans">Planes</a><a href="../../es/#kit">Kit IA</a><a href="https://billing.stripe.com/p/login/6oU14o8Gvgja2Nd94VaEE00">Administrar suscripción</a><a href="../../" hreflang="en">English</a></nav></div></header><main class="wrap"><div class="doc"><style>
-.ix{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;align-items:end;height:220px;border-bottom:1px solid var(--rule);position:relative;margin-top:28px}
-.ix .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
-.ix .b{width:100%;max-width:36px;border-radius:3px 3px 0 0;background:var(--accent)}
-.ix .b.hi{background:var(--signal)}.ix .b.pv{opacity:.5}
-.ix .v{font:500 .7rem var(--mono);margin-bottom:4px;font-variant-numeric:tabular-nums}
-.ix .base{position:absolute;left:0;right:0;border-top:1px dashed var(--muted)}
-.ix .base span{position:absolute;left:-2px;top:-1.3em;font:500 .7rem var(--mono);color:var(--muted)}
-.ixl{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;font:500 .66rem var(--mono);color:var(--muted);text-align:center;margin-top:4px}
-.big{font:600 3.2rem/1 var(--serif);color:var(--accent);font-variant-numeric:tabular-nums}
-@media (max-width:560px){.ix .v{font-size:.55rem}.ixl{font-size:.55rem}}
-</style><div class="eyebrow">Índice Norte · Actualizado 2026-10-10</div><h1>Índice Norte de Presión por Retiros</h1><p class="lede">Un número al mes que mide cuánto pesa la actividad de retiros de dispositivos de la FDA, comparada con su propio pasado reciente. 100 es un mes típico del año anterior. Arriba de 100, más presión de lo normal; abajo de 100, menos. Se construye solo con datos públicos de openFDA y la fórmula está publicada para que cualquiera lo reproduzca.</p>
-<div id="latest" style="margin-top:20px"></div>
-<h2>Índice por mes (100 = mes típico del año anterior)</h2><div class="ix" id="ix" role="img" aria-label="Índice por mes (100 = mes típico del año anterior)"></div><div class="ixl" id="ixl"></div>
-<h2>Cómo se calcula</h2><p>Cada mes: <strong>W = 10 × Clase I + 3 × Clase II + 1 × Clase III</strong> registros de retiro (openFDA device/enforcement, por fecha de reporte). Índice = 100 × W ÷ la mediana de W de los 12 meses anteriores. La Clase I pesa más porque es la de mayor riesgo. Los pesos son una decisión editorial nuestra y se mantienen fijos para que la serie sea comparable.</p>
-<div class="tablebox"><table><thead><tr><th>Mes</th><th>Clase I</th><th>Clase II</th><th>Clase III</th><th>Puntaje ponderado W</th><th>Base (mediana de W)</th><th>Índice</th><th>Proporción software</th></tr></thead><tbody id="rows"></tbody></table></div>
+.nx{--hi:#d9622b;--ok:#2f6f9f;--lo:#9aa3a8}
+.nx svg{width:100%;height:auto;display:block;overflow:visible}
+.nx text{font-family:var(--mono);fill:var(--muted)}
+.nx .grid{stroke:var(--rule);stroke-width:1}
+.nx .ref{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4}
+.nx .bar{cursor:pointer}.nx .bar:hover,.nx .bar:focus{opacity:.8}
+.nx .pv{opacity:.45}
+.nx .val{font-size:11px;fill:var(--ink,currentColor);font-weight:600}
+.nx .ann{font-size:11px}
+.lg{display:flex;flex-wrap:wrap;gap:6px 16px;font:500 .78rem var(--mono);color:var(--muted);margin:8px 0}
+.lg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.card3{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.card3>div{border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.card3 b{display:block;font:600 1.6rem/1.1 var(--serif);font-variant-numeric:tabular-nums}
+.card3 span{font:500 .74rem var(--mono);color:var(--muted)}
+.hero{display:flex;gap:22px;align-items:center;flex-wrap:wrap;border:1px solid var(--rule);border-radius:10px;padding:16px 20px;margin:18px 0}
+.hero .big{font:600 3.6rem/1 var(--serif);font-variant-numeric:tabular-nums}
+.badge{display:inline-block;font:600 .74rem var(--mono);padding:2px 9px;border-radius:99px;color:#fff}
+.tip{position:fixed;pointer-events:none;background:#16222b;color:#fff;font:500 .76rem/1.45 var(--mono);padding:8px 10px;border-radius:6px;z-index:9;display:none;max-width:230px}
+.steps li{margin:6px 0}
+dl.cl dt{font-weight:700;margin-top:10px}dl.cl dd{margin:2px 0 0 0}
+details.q{border-top:1px solid var(--rule);padding:8px 0}details.q summary{cursor:pointer;font-weight:600}
+</style><div class="nx"><div class="eyebrow">Índice Norte · Actualizado 2026-10-10</div><h1>Índice Norte de Presión por Retiros</h1><p class="lede">¿Qué tan ocupada estuvo la FDA con retiros de dispositivos médicos este mes, comparado con un mes normal del último año? Un solo número lo responde: <strong>100 = un mes normal</strong>. Arriba de 100, más actividad de retiros de lo normal; abajo, menos. Solo datos públicos de openFDA.</p>
+<div class="hero" id="hero"></div>
+<h2>En 30 segundos</h2><ol class="steps"><li><strong>Qué cuenta:</strong> los registros de retiro de dispositivos médicos que la FDA publicó en el mes; la Clase I (más grave) pesa diez veces más que la Clase III (menos grave).</li><li><strong>Qué significa 100:</strong> el mismo conteo ponderado que el mes típico (mediana) de los 12 meses anteriores.</li><li><strong>Qué no es:</strong> no dice si los dispositivos son seguros ni si una empresa va bien o mal. Mide actividad de retiros de la FDA, nada más.</li></ol>
+<h2>1 · El índice, mes por mes</h2><p class="fine">Cada barra es un mes. Línea punteada = mes normal (100). Naranja = claramente arriba de lo normal (más de 120), azul = cerca de lo normal (80–120), gris = más tranquilo (menos de 80). Barra tenue = mes todavía en proceso.</p><div class="lg"><span><i style="background:#d9622b"></i>Arriba de lo normal (&gt;120)</span><span><i style="background:#2f6f9f"></i>Cerca de lo normal (80–120)</span><span><i style="background:#9aa3a8"></i>Más tranquilo (&lt;80)</span></div><div id="c1"></div>
+<div class="card3" id="stats"></div>
+<h2>2 · De qué estuvieron hechos los retiros</h2><p class="fine">Los mismos meses, pero con el número de registros por clase de la FDA. Una sección oscura alta significa muchos registros de Clase I (los más graves), que son los que más mueven el índice.</p><div id="c2"></div>
+<h2>3 · Cuánto fue por software</h2><p class="fine">Proporción de registros del mes cuya causa menciona “software”. Útil para equipos de software como dispositivo y dispositivos conectados.</p><div id="c3"></div>
+<h2>Clase I, II y III, en palabras simples</h2><dl class="cl"><dt>Clase I</dt><dd>Probabilidad razonable de lesión grave o muerte. La clase más grave. Cuenta 10×.</dd><dt>Clase II</dt><dd>Puede causar daño temporal o médicamente reversible; el daño grave es poco probable. Aquí cae la mayoría. Cuenta 3×.</dd><dt>Clase III</dt><dd>Poco probable que cause daño (por ejemplo, un problema de etiquetado). Cuenta 1×.</dd></dl>
+<h2>Cómo se calcula</h2><p>Cada mes: <strong>W = 10 × Clase I + 3 × Clase II + 1 × Clase III</strong> registros de retiro (openFDA device/enforcement, por fecha de reporte). Índice = 100 × W ÷ la mediana de W de los 12 meses anteriores. La Clase I pesa más porque es la de mayor riesgo. Los pesos son una decisión editorial nuestra y se mantienen fijos para que la serie sea comparable.</p><h3>Ejemplo</h3><p>En un mes con 30 registros de Clase I, 248 de Clase II y 0 de Clase III: W = 10×30 + 3×248 + 0 = <strong>1,044</strong>. Si la mediana de W de los 12 meses anteriores fue 1,039.5, el índice es 100 × 1,044 ÷ 1,039.5 = <strong>100.4</strong>, un mes normal.</p>
+<h2>Todas las cifras, mes por mes</h2><div class="tablebox"><table><thead><tr><th>Mes</th><th>Clase I</th><th>Clase II</th><th>Clase III</th><th>Puntaje ponderado W</th><th>Base (mediana de W)</th><th>Índice</th><th>Proporción software</th></tr></thead><tbody id="rows"></tbody></table></div>
 <p class="fine">Proporción software = registros cuya causa menciona “software” ÷ todos los registros del mes.</p>
+<h2>Preguntas frecuentes</h2><details class="q"><summary>¿Un número alto es mala noticia?</summary><p>No por sí solo. Significa que la FDA publicó más registros de retiro (o más graves) que de costumbre. Un solo retiro grande con cientos de registros de producto puede subir un mes.</p></details><details class="q"><summary>¿Por qué cambia la base?</summary><p>La base es siempre la mediana de los 12 meses anteriores, así que se mueve con el pasado reciente. Así el índice se compara con “ahora”, no con un año viejo.</p></details><details class="q"><summary>¿Sirve para juzgar a una empresa?</summary><p>No. Cubre toda la industria de dispositivos y no habla de ninguna firma. Para una empresa, usa la consulta gratuita de retiros.</p></details><details class="q"><summary>¿De dónde salen los datos?</summary><p>De los registros de aplicación (enforcement) de dispositivos de openFDA (públicos). Las consultas exactas están al final para que cualquiera reproduzca cada cifra.</p></details>
 <h2>Cómo leerlo y sus límites</h2><ul class="fine"><li>Un registro no es un evento: un retiro puede generar muchos registros (uno por producto o lote).</li><li>La fecha de reporte es cuando la FDA clasificó o publicó el retiro, no cuando ocurrió el problema.</li><li>La FDA publica cada semana, así que los meses con cinco fechas de publicación suman más que los de cuatro; solo eso puede mover un mes hasta cerca de 25%.</li><li>El último mes puede estar incompleto hasta que openFDA se actualice (marcado como preliminar).</li><li>El índice describe solo la actividad de retiros. No mide la seguridad de los dispositivos, ni a ninguna empresa, ni un valor de inversión.</li></ul>
 <p class="fine">Reproduce cualquier cifra: <code id="q" style="word-break:break-all"></code></p>
-<p style="margin-top:24px"><a class="btn primary" href="https://buy.stripe.com/4gMfZi2i78QI73tftjaEE05">Recibe el índice cada semana en el boletín gratuito</a></p>
+<p style="margin-top:24px"><a class="btn primary" href="https://buy.stripe.com/4gMfZi2i78QI73tftjaEE05">Recibe el índice cada semana en el boletín gratuito</a></p></div>
+<div class="tip" id="tip"></div>
 <script>
-(function(){var PROV="preliminar",lang="es";
+(function(){var T={"now_hi": "Alto", "now_ok": "Normal", "now_lo": "Tranquilo", "read_hi": "<strong>Arriba de lo normal.</strong> Más actividad de retiros que un mes típico.", "read_ok": "<strong>Cerca de lo normal.</strong> Actividad de retiros parecida a un mes típico.", "read_lo": "<strong>Abajo de lo normal.</strong> Menos actividad de retiros que un mes típico.", "vs": "vs mes anterior", "peak": "máximo del periodo", "low": "mínimo del periodo", "cnt": "Meses arriba de 100 en los últimos 12", "axis_y": "Índice (100 = mes normal)", "axis_c": "Registros de retiro (número)", "axis_s": "Proporción con “software” (%)", "cls_lbl": ["Clase I", "Clase II", "Clase III"]},lang="es";
+var MN={en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],es:['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']}[lang];
+function lab(m){var p=m.split('-');return MN[+p[1]-1]+' '+p[0].slice(2);}
+var COL=function(v){return v>120?'#d9622b':(v>=80?'#2f6f9f':'#9aa3a8');};
 var U=document.querySelector('link[rel=icon]').href.replace('assets/favicon.svg','nrpi/data.json');
+var tip=document.getElementById('tip');
+function showTip(e,html){tip.innerHTML=html;tip.style.display='block';var x=(e.clientX||0)+14,y=(e.clientY||0)+14;if(x+240>innerWidth)x=innerWidth-250;tip.style.left=x+'px';tip.style.top=y+'px';}
+function hideTip(){tip.style.display='none';}
+function svg(w,h,inner){return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="">'+inner+'</svg>';}
+function bind(root,fn){root.querySelectorAll('[data-i]').forEach(function(el){var i=+el.getAttribute('data-i');
+ ['mousemove','focus','touchstart'].forEach(function(ev){el.addEventListener(ev,function(e){var p=e.touches?e.touches[0]:e;if(ev==='focus'){var r=el.getBoundingClientRect();p={clientX:r.left,clientY:r.top};}showTip(p,fn(i));});});
+ ['mouseleave','blur'].forEach(function(ev){el.addEventListener(ev,hideTip);});});}
 fetch(U).then(function(r){return r.json();}).then(function(d){
-var ms=d.months.filter(function(m){return m.index!=null;});var max=Math.max.apply(null,ms.map(function(m){return m.index;}))*1.1;
-var ix=document.getElementById('ix');var h='';ms.forEach(function(m){var pct=(m.index/max*100).toFixed(1);
-h+='<div class="col"><span class="v">'+m.index.toFixed(0)+'</span><div class="b'+(m.index>=100?' hi':'')+(m.partial?' pv':'')+'" style="height:'+pct+'%"></div></div>';});
-h+='<div class="base" style="bottom:'+(100/max*100).toFixed(1)+'%"><span>100</span></div>';ix.innerHTML=h;
-document.getElementById('ixl').innerHTML=ms.map(function(m){return '<span>'+m.month.slice(2)+'</span>';}).join('');
-var L=ms[ms.length-1],P=ms[ms.length-2];
-document.getElementById('latest').innerHTML='<div class="big">'+L.index.toFixed(1)+'</div><p class="fine">'+L.month+(L.partial?' ('+PROV+')':'')+' · '+P.month+': '+P.index.toFixed(1)+'</p>';
-document.getElementById('rows').innerHTML=ms.slice().reverse().map(function(m){return '<tr><td>'+m.month+(m.partial?' <span class="fine">('+PROV+')</span>':'')+'</td><td class="num">'+m.class_I+'</td><td class="num">'+m.class_II+'</td><td class="num">'+m.class_III+'</td><td class="num">'+m.W.toLocaleString('en-US')+'</td><td class="num">'+m.baseline_median_W+'</td><td class="num"><strong>'+m.index.toFixed(1)+'</strong></td><td class="num">'+(m.software_share*100).toFixed(1)+'%</td></tr>';}).join('');
+var ms=d.months.filter(function(m){return m.index!=null;});
+var n=ms.length,L=ms[n-1],P=ms[n-2];
+var st=function(v){return v>120?[T.now_hi,'#d9622b',T.read_hi]:(v>=80?[T.now_ok,'#2f6f9f',T.read_ok]:[T.now_lo,'#9aa3a8',T.read_lo]);}(L.index);
+var diff=L.index-P.index;
+document.getElementById('hero').innerHTML='<div><div class="big" style="color:'+st[1]+'">'+L.index.toFixed(0)+'</div><span class="badge" style="background:'+st[1]+'">'+st[0]+'</span></div><div style="flex:1;min-width:220px"><div style="font:600 1.05rem var(--serif)">'+lab(L.month)+(L.partial?' · '+"preliminar":'')+'</div><p style="margin:6px 0">'+st[2]+'</p><p class="fine" style="margin:0">'+T.vs+': '+(diff>=0?'+':'')+diff.toFixed(1)+' (<span>'+lab(P.month)+': '+P.index.toFixed(0)+'</span>)</p></div>';
+var mx=ms.reduce(function(a,b){return b.index>a.index?b:a;}),mn=ms.reduce(function(a,b){return b.index<a.index?b:a;});
+var above=ms.filter(function(m){return m.index>100;}).length;
+document.getElementById('stats').innerHTML='<div><b>'+mx.index.toFixed(0)+'</b><span>'+T.peak+' · '+lab(mx.month)+'</span></div><div><b>'+mn.index.toFixed(0)+'</b><span>'+T.low+' · '+lab(mn.month)+'</span></div><div><b>'+above+' / '+n+'</b><span>'+T.cnt+'</span></div>';
+/* chart 1 */
+var W=720,H=330,ml=46,mr=10,mt=24,mb=40,pw=W-ml-mr,ph=H-mt-mb;
+var ymax=Math.ceil(Math.max(250,mx.index*1.08)/50)*50;
+var y=function(v){return mt+ph-v/ymax*ph;};var bw=pw/n;
+var s='';for(var t=0;t<=ymax;t+=50){s+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y(t)+'" y2="'+y(t)+'"/><text x="'+(ml-6)+'" y="'+(y(t)+4)+'" text-anchor="end" font-size="11">'+t+'</text>';}
+s+='<text x="12" y="'+(mt+ph/2)+'" font-size="11" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+T.axis_y+'</text>';
+ms.forEach(function(m,i){var x=ml+i*bw+bw*.14,w=bw*.72,yy=y(m.index);
+ s+='<rect class="bar'+(m.partial?' pv':'')+'" data-i="'+i+'" tabindex="0" x="'+x+'" y="'+yy+'" width="'+w+'" height="'+(y(0)-yy)+'" fill="'+COL(m.index)+'" rx="2"/>';
+ s+='<text class="val" x="'+(x+w/2)+'" y="'+(yy-5)+'" text-anchor="middle">'+m.index.toFixed(0)+'</text>';
+ s+='<text x="'+(x+w/2)+'" y="'+(H-mb+15)+'" font-size="10" transform="rotate(-35 '+(x+w/2)+' '+(H-mb+15)+')" text-anchor="end">'+lab(m.month)+'</text>';});
+s+='<line class="ref" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y(100)+'" y2="'+y(100)+'"/><text class="ann" x="'+(W-mr-bw)+'" y="'+(y(100)-6)+'" text-anchor="end">Mes normal = 100</text>';
+var c1=document.getElementById('c1');c1.innerHTML=svg(W,H,s);
+function tip1(i){var m=ms[i];return '<b>'+lab(m.month)+'</b>'+(m.partial?' ('+"preliminar"+')':'')+'<br>'+T.tip_idx+': '+m.index.toFixed(1)+'<br>'+T.tip_w+': '+m.W+'<br>'+T.tip_base+': '+m.baseline_median_W+'<br>I / II / III: '+m.class_I+' / '+m.class_II+' / '+m.class_III;}
+bind(c1,tip1);
+/* chart 2 stacked counts */
+var mx2=Math.max.apply(null,ms.map(function(m){return m.class_I+m.class_II+m.class_III;}));var ymax2=Math.ceil(mx2*1.08/100)*100;
+var y2=function(v){return mt+ph-v/ymax2*ph;};var s2='';
+for(var t2=0;t2<=ymax2;t2+=100){s2+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y2(t2)+'" y2="'+y2(t2)+'"/><text x="'+(ml-6)+'" y="'+(y2(t2)+4)+'" text-anchor="end" font-size="11">'+t2+'</text>';}
+s2+='<text x="12" y="'+(mt+ph/2)+'" font-size="11" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+T.axis_c+'</text>';
+var CC=['#8c2f1a','#2f6f9f','#9aa3a8'];
+ms.forEach(function(m,i){var x=ml+i*bw+bw*.14,w=bw*.72,base=0,v=[m.class_I,m.class_II,m.class_III];
+ var yb=y2(0);s2+='<g class="bar'+(m.partial?' pv':'')+'" data-i="'+i+'" tabindex="0">';
+ [0,1,2].forEach(function(k){var hh=v[k]/ymax2*ph;yb-=hh;s2+='<rect x="'+x+'" y="'+yb+'" width="'+w+'" height="'+hh+'" fill="'+CC[k]+'"/>';});
+ s2+='</g><text x="'+(x+w/2)+'" y="'+(H-mb+15)+'" text-anchor="end" font-size="10" transform="rotate(-35 '+(x+w/2)+' '+(H-mb+15)+')">'+lab(m.month)+'</text>';});
+var c2=document.getElementById('c2');c2.innerHTML='<div class="lg">'+[0,1,2].map(function(k){return '<span><i style="background:'+CC[k]+'"></i>'+T.cls_lbl[k]+'</span>';}).join('')+'</div>'+svg(W,H,s2);
+bind(c2,function(i){var m=ms[i];return '<b>'+lab(m.month)+'</b><br>'+T.cls_lbl[0]+': '+m.class_I+'<br>'+T.cls_lbl[1]+': '+m.class_II+'<br>'+T.cls_lbl[2]+': '+m.class_III;});
+/* chart 3 software share */
+var mx3=Math.max.apply(null,ms.map(function(m){return m.software_share*100;}));var ymax3=Math.ceil(mx3*1.15/5)*5;
+var y3=function(v){return mt+ph-v/ymax3*ph;};var s3='';
+for(var t3=0;t3<=ymax3;t3+=5){s3+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y3(t3)+'" y2="'+y3(t3)+'"/><text x="'+(ml-6)+'" y="'+(y3(t3)+4)+'" text-anchor="end" font-size="11">'+t3+'%</text>';}
+s3+='<text x="12" y="'+(mt+ph/2)+'" font-size="11" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+T.axis_s+'</text>';
+ms.forEach(function(m,i){var x=ml+i*bw+bw*.14,w=bw*.72,v=m.software_share*100,yy=y3(v);
+ s3+='<rect class="bar'+(m.partial?' pv':'')+'" data-i="'+i+'" tabindex="0" x="'+x+'" y="'+yy+'" width="'+w+'" height="'+(y3(0)-yy)+'" fill="#6b5b95" rx="2"/><text class="val" x="'+(x+w/2)+'" y="'+(yy-5)+'" text-anchor="middle">'+v.toFixed(1)+'</text><text x="'+(x+w/2)+'" y="'+(H-mb+15)+'" text-anchor="end" font-size="10" transform="rotate(-35 '+(x+w/2)+' '+(H-mb+15)+')">'+lab(m.month)+'</text>';});
+var c3=document.getElementById('c3');c3.innerHTML=svg(W,H,s3);
+bind(c3,function(i){var m=ms[i];return '<b>'+lab(m.month)+'</b><br>'+(m.software_share*100).toFixed(1)+'% ('+m.software+' / '+m.total+')';});
+document.getElementById('rows').innerHTML=ms.slice().reverse().map(function(m){return '<tr><td>'+m.month+(m.partial?' <span class="fine">('+"preliminar"+')</span>':'')+'</td><td class="num">'+m.class_I+'</td><td class="num">'+m.class_II+'</td><td class="num">'+m.class_III+'</td><td class="num">'+m.W+'</td><td class="num">'+m.baseline_median_W+'</td><td class="num"><b>'+m.index.toFixed(1)+'</b></td><td class="num">'+(m.software_share*100).toFixed(1)+'%</td></tr>';}).join('');
 document.getElementById('q').textContent=d.queries_template;
 });})();
 </script></div></main><footer><div class="wrap cols"><p>Norte Regulatorio es una publicación independiente operada por Kaus Australis Castro Murrieta. No está afiliada a la FDA, COFEPRIS ni a ninguna empresa mencionada. Contenido informativo y educativo; no es asesoría legal, regulatoria, médica ni de inversión. Los datos provienen de fuentes públicas (openFDA, páginas de la FDA, Federal Register, COFEPRIS) y deben verificarse en la fuente oficial antes de actuar. Los análisis son opinión editorial. El Kit de IA es una guía y apoyo de redacción, no un sistema validado de quejas, CAPA u 8D; usa los sistemas aprobados de tu organización para los registros regulados.</p><div style="display:flex;flex-direction:column;gap:6px"><a href="../../terms/">Terms of Use</a><a href="../../terminos/">Términos de uso</a><a href="../../privacy/">Aviso de privacidad</a><a href="https://billing.stripe.com/p/login/6oU14o8Gvgja2Nd94VaEE00">Administrar suscripción</a><span>Correcciones y contacto: hola@norteregulatorio.com</span><span>© 2026 Norte Regulatorio</span></div></div></footer></body></html>

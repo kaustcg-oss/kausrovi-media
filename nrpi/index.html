@@ -2,37 +2,102 @@
 <title>Norte Index · Norte Regulatorio</title><meta name="description" content="Norte Recall Pressure Index: a monthly, reproducible measure of FDA device recall activity from openFDA.">
 <meta property="og:title" content="Norte Index · Norte Regulatorio"><meta property="og:description" content="Norte Recall Pressure Index: a monthly, reproducible measure of FDA device recall activity from openFDA."><meta property="og:type" content="website"><meta property="og:url" content="https://norteregulatorio.com/nrpi/"><meta property="og:image" content="https://norteregulatorio.com/assets/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://norteregulatorio.com/nrpi/">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:wght@500;600&display=swap"><link rel="stylesheet" href="../assets/site.css"></head><body><header class="top"><div class="wrap"><a class="brand" href="../"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,1 21,22 12,17 3,22" fill="var(--accent)"/><polygon points="12,1 12,17 3,22" fill="var(--signal)" opacity=".85"/></svg>Norte Regulatorio</a><nav class="links"><a href="../#lookup">Company lookup</a><a href="../issues/">Issues</a><a href="../nrpi/">Norte Index</a><a href="../market/">Market watch</a><a href="../#plans">Plans</a><a href="../#kit">AI Kit</a><a href="https://billing.stripe.com/p/login/6oU14o8Gvgja2Nd94VaEE00">Manage subscription</a><a href="../es/" hreflang="es">Español</a></nav></div></header><main class="wrap"><div class="doc"><style>
-.ix{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;align-items:end;height:220px;border-bottom:1px solid var(--rule);position:relative;margin-top:28px}
-.ix .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
-.ix .b{width:100%;max-width:36px;border-radius:3px 3px 0 0;background:var(--accent)}
-.ix .b.hi{background:var(--signal)}.ix .b.pv{opacity:.5}
-.ix .v{font:500 .7rem var(--mono);margin-bottom:4px;font-variant-numeric:tabular-nums}
-.ix .base{position:absolute;left:0;right:0;border-top:1px dashed var(--muted)}
-.ix .base span{position:absolute;left:-2px;top:-1.3em;font:500 .7rem var(--mono);color:var(--muted)}
-.ixl{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;font:500 .66rem var(--mono);color:var(--muted);text-align:center;margin-top:4px}
-.big{font:600 3.2rem/1 var(--serif);color:var(--accent);font-variant-numeric:tabular-nums}
-@media (max-width:560px){.ix .v{font-size:.55rem}.ixl{font-size:.55rem}}
-</style><div class="eyebrow">Norte Index · Updated 2026-10-10</div><h1>Norte Recall Pressure Index</h1><p class="lede">One number a month for how much FDA device-recall activity is weighing on the industry, compared with its own recent past. 100 is a typical month of the previous year. Above 100, more pressure than usual; below 100, less. Built only from public openFDA data, with the formula published so anyone can reproduce it.</p>
-<div id="latest" style="margin-top:20px"></div>
-<h2>Index by month (100 = typical month of the prior year)</h2><div class="ix" id="ix" role="img" aria-label="Index by month (100 = typical month of the prior year)"></div><div class="ixl" id="ixl"></div>
-<h2>How it is calculated</h2><p>Each month: <strong>W = 10 × Class I + 3 × Class II + 1 × Class III</strong> recall records (openFDA device/enforcement, by report date). Index = 100 × W ÷ the median W of the 12 months before. Class I weighs most because it is the highest-risk class. The weights are our editorial choice and are fixed so the series stays comparable.</p>
-<div class="tablebox"><table><thead><tr><th>Month</th><th>Class I</th><th>Class II</th><th>Class III</th><th>Weighted score W</th><th>Baseline (median W)</th><th>Index</th><th>Software share</th></tr></thead><tbody id="rows"></tbody></table></div>
+.nx{--hi:#d9622b;--ok:#2f6f9f;--lo:#9aa3a8}
+.nx svg{width:100%;height:auto;display:block;overflow:visible}
+.nx text{font-family:var(--mono);fill:var(--muted)}
+.nx .grid{stroke:var(--rule);stroke-width:1}
+.nx .ref{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4}
+.nx .bar{cursor:pointer}.nx .bar:hover,.nx .bar:focus{opacity:.8}
+.nx .pv{opacity:.45}
+.nx .val{font-size:11px;fill:var(--ink,currentColor);font-weight:600}
+.nx .ann{font-size:11px}
+.lg{display:flex;flex-wrap:wrap;gap:6px 16px;font:500 .78rem var(--mono);color:var(--muted);margin:8px 0}
+.lg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.card3{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.card3>div{border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.card3 b{display:block;font:600 1.6rem/1.1 var(--serif);font-variant-numeric:tabular-nums}
+.card3 span{font:500 .74rem var(--mono);color:var(--muted)}
+.hero{display:flex;gap:22px;align-items:center;flex-wrap:wrap;border:1px solid var(--rule);border-radius:10px;padding:16px 20px;margin:18px 0}
+.hero .big{font:600 3.6rem/1 var(--serif);font-variant-numeric:tabular-nums}
+.badge{display:inline-block;font:600 .74rem var(--mono);padding:2px 9px;border-radius:99px;color:#fff}
+.tip{position:fixed;pointer-events:none;background:#16222b;color:#fff;font:500 .76rem/1.45 var(--mono);padding:8px 10px;border-radius:6px;z-index:9;display:none;max-width:230px}
+.steps li{margin:6px 0}
+dl.cl dt{font-weight:700;margin-top:10px}dl.cl dd{margin:2px 0 0 0}
+details.q{border-top:1px solid var(--rule);padding:8px 0}details.q summary{cursor:pointer;font-weight:600}
+</style><div class="nx"><div class="eyebrow">Norte Index · Updated 2026-10-10</div><h1>Norte Recall Pressure Index</h1><p class="lede">How busy was FDA’s medical-device recall desk this month, compared with a normal month of the past year? One number answers it: <strong>100 = a normal month</strong>. Above 100, more recall activity than normal; below 100, less. Public openFDA data only.</p>
+<div class="hero" id="hero"></div>
+<h2>In 30 seconds</h2><ol class="steps"><li><strong>What it counts:</strong> recall records FDA posted for medical devices in the month, with Class I (most serious) counted ten times more than Class III (least serious).</li><li><strong>What 100 means:</strong> the same weighted count as the typical (median) month of the 12 months before.</li><li><strong>What it is not:</strong> it does not say whether devices are safe, or whether any company is doing well or badly. It is a measure of FDA recall activity, nothing more.</li></ol>
+<h2>1 · The index, month by month</h2><p class="fine">Each bar is one month. Dashed line = a normal month (100). Orange = clearly above normal (over 120), blue = near normal (80–120), grey = quieter than normal (under 80). Faded bar = month still being completed.</p><div class="lg"><span><i style="background:#d9622b"></i>Above normal (&gt;120)</span><span><i style="background:#2f6f9f"></i>Near normal (80–120)</span><span><i style="background:#9aa3a8"></i>Quieter (&lt;80)</span></div><div id="c1"></div>
+<div class="card3" id="stats"></div>
+<h2>2 · What the recalls were made of</h2><p class="fine">Same months, but showing the number of recall records by FDA class. A tall dark section means many Class I (most serious) records, which move the index most.</p><div id="c2"></div>
+<h2>3 · How much of it was software</h2><p class="fine">Share of the month’s recall records whose stated reason mentions “software”. Useful for software-as-a-device and connected-device teams.</p><div id="c3"></div>
+<h2>Class I, II and III, in plain words</h2><dl class="cl"><dt>Class I</dt><dd>Reasonable chance of serious injury or death. The most serious class. Counts 10×.</dd><dt>Class II</dt><dd>May cause temporary or medically reversible harm; serious harm is unlikely. Most recalls are here. Counts 3×.</dd><dt>Class III</dt><dd>Unlikely to cause harm (for example, a labeling problem). Counts 1×.</dd></dl>
+<h2>How it is calculated</h2><p>Each month: <strong>W = 10 × Class I + 3 × Class II + 1 × Class III</strong> recall records (openFDA device/enforcement, by report date). Index = 100 × W ÷ the median W of the 12 months before. Class I weighs most because it is the highest-risk class. The weights are our editorial choice and are fixed so the series stays comparable.</p><h3>Worked example</h3><p>In a month with 30 Class I, 248 Class II and 0 Class III records: W = 10×30 + 3×248 + 0 = <strong>1,044</strong>. If the median W of the previous 12 months was 1,039.5, the index is 100 × 1,044 ÷ 1,039.5 = <strong>100.4</strong>, a normal month.</p>
+<h2>All numbers, month by month</h2><div class="tablebox"><table><thead><tr><th>Month</th><th>Class I</th><th>Class II</th><th>Class III</th><th>Weighted score W</th><th>Baseline (median W)</th><th>Index</th><th>Software share</th></tr></thead><tbody id="rows"></tbody></table></div>
 <p class="fine">Software share = records whose recall reason mentions “software” ÷ all records that month.</p>
+<h2>Questions people ask</h2><details class="q"><summary>Is a high number bad news?</summary><p>Not by itself. It means FDA posted more (or more serious) recall records than usual. One large recall with hundreds of product records can lift a month.</p></details><details class="q"><summary>Why does the baseline change?</summary><p>The baseline is always the median of the 12 months before, so it moves as the recent past moves. That keeps the index comparable with “now”, not with an old year.</p></details><details class="q"><summary>Can I use it to judge a company?</summary><p>No. It covers the whole device industry and is not about any one firm. For a company, use the free recall check.</p></details><details class="q"><summary>Where does the data come from?</summary><p>openFDA device enforcement records (public). The exact queries are at the bottom so anyone can reproduce every number.</p></details>
 <h2>How to read it, and its limits</h2><ul class="fine"><li>A record is not an event: one recall can produce many records (one per product or lot).</li><li>Report date is when FDA classified or posted the recall, not when the problem happened.</li><li>FDA posts weekly, so months with five posting dates score higher than months with four; that alone can move a month by up to about 25%.</li><li>The latest month may be incomplete until openFDA refreshes (marked provisional).</li><li>The index describes recall activity only. It is not a measure of device safety, of any company, or of investment value.</li></ul>
 <p class="fine">Reproduce any number: <code id="q" style="word-break:break-all"></code></p>
-<p style="margin-top:24px"><a class="btn primary" href="https://buy.stripe.com/4gMfZi2i78QI73tftjaEE05">Get the index every week in the free newsletter</a></p>
+<p style="margin-top:24px"><a class="btn primary" href="https://buy.stripe.com/4gMfZi2i78QI73tftjaEE05">Get the index every week in the free newsletter</a></p></div>
+<div class="tip" id="tip"></div>
 <script>
-(function(){var PROV="provisional",lang="en";
+(function(){var T={"now_hi": "High", "now_ok": "Normal", "now_lo": "Quiet", "read_hi": "<strong>Above normal.</strong> More recall activity than a typical month.", "read_ok": "<strong>About normal.</strong> Recall activity close to a typical month.", "read_lo": "<strong>Below normal.</strong> Less recall activity than a typical month.", "vs": "vs previous month", "peak": "highest in the period", "low": "lowest in the period", "cnt": "Months above 100 in the last 12", "axis_y": "Index (100 = normal month)", "axis_c": "Recall records (count)", "axis_s": "Share with “software” (%)", "cls_lbl": ["Class I", "Class II", "Class III"]},lang="en";
+var MN={en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],es:['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']}[lang];
+function lab(m){var p=m.split('-');return MN[+p[1]-1]+' '+p[0].slice(2);}
+var COL=function(v){return v>120?'#d9622b':(v>=80?'#2f6f9f':'#9aa3a8');};
 var U=document.querySelector('link[rel=icon]').href.replace('assets/favicon.svg','nrpi/data.json');
+var tip=document.getElementById('tip');
+function showTip(e,html){tip.innerHTML=html;tip.style.display='block';var x=(e.clientX||0)+14,y=(e.clientY||0)+14;if(x+240>innerWidth)x=innerWidth-250;tip.style.left=x+'px';tip.style.top=y+'px';}
+function hideTip(){tip.style.display='none';}
+function svg(w,h,inner){return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="">'+inner+'</svg>';}
+function bind(root,fn){root.querySelectorAll('[data-i]').forEach(function(el){var i=+el.getAttribute('data-i');
+ ['mousemove','focus','touchstart'].forEach(function(ev){el.addEventListener(ev,function(e){var p=e.touches?e.touches[0]:e;if(ev==='focus'){var r=el.getBoundingClientRect();p={clientX:r.left,clientY:r.top};}showTip(p,fn(i));});});
+ ['mouseleave','blur'].forEach(function(ev){el.addEventListener(ev,hideTip);});});}
 fetch(U).then(function(r){return r.json();}).then(function(d){
-var ms=d.months.filter(function(m){return m.index!=null;});var max=Math.max.apply(null,ms.map(function(m){return m.index;}))*1.1;
-var ix=document.getElementById('ix');var h='';ms.forEach(function(m){var pct=(m.index/max*100).toFixed(1);
-h+='<div class="col"><span class="v">'+m.index.toFixed(0)+'</span><div class="b'+(m.index>=100?' hi':'')+(m.partial?' pv':'')+'" style="height:'+pct+'%"></div></div>';});
-h+='<div class="base" style="bottom:'+(100/max*100).toFixed(1)+'%"><span>100</span></div>';ix.innerHTML=h;
-document.getElementById('ixl').innerHTML=ms.map(function(m){return '<span>'+m.month.slice(2)+'</span>';}).join('');
-var L=ms[ms.length-1],P=ms[ms.length-2];
-document.getElementById('latest').innerHTML='<div class="big">'+L.index.toFixed(1)+'</div><p class="fine">'+L.month+(L.partial?' ('+PROV+')':'')+' · '+P.month+': '+P.index.toFixed(1)+'</p>';
-document.getElementById('rows').innerHTML=ms.slice().reverse().map(function(m){return '<tr><td>'+m.month+(m.partial?' <span class="fine">('+PROV+')</span>':'')+'</td><td class="num">'+m.class_I+'</td><td class="num">'+m.class_II+'</td><td class="num">'+m.class_III+'</td><td class="num">'+m.W.toLocaleString('en-US')+'</td><td class="num">'+m.baseline_median_W+'</td><td class="num"><strong>'+m.index.toFixed(1)+'</strong></td><td class="num">'+(m.software_share*100).toFixed(1)+'%</td></tr>';}).join('');
+var ms=d.months.filter(function(m){return m.index!=null;});
+var n=ms.length,L=ms[n-1],P=ms[n-2];
+var st=function(v){return v>120?[T.now_hi,'#d9622b',T.read_hi]:(v>=80?[T.now_ok,'#2f6f9f',T.read_ok]:[T.now_lo,'#9aa3a8',T.read_lo]);}(L.index);
+var diff=L.index-P.index;
+document.getElementById('hero').innerHTML='<div><div class="big" style="color:'+st[1]+'">'+L.index.toFixed(0)+'</div><span class="badge" style="background:'+st[1]+'">'+st[0]+'</span></div><div style="flex:1;min-width:220px"><div style="font:600 1.05rem var(--serif)">'+lab(L.month)+(L.partial?' · '+"provisional":'')+'</div><p style="margin:6px 0">'+st[2]+'</p><p class="fine" style="margin:0">'+T.vs+': '+(diff>=0?'+':'')+diff.toFixed(1)+' (<span>'+lab(P.month)+': '+P.index.toFixed(0)+'</span>)</p></div>';
+var mx=ms.reduce(function(a,b){return b.index>a.index?b:a;}),mn=ms.reduce(function(a,b){return b.index<a.index?b:a;});
+var above=ms.filter(function(m){return m.index>100;}).length;
+document.getElementById('stats').innerHTML='<div><b>'+mx.index.toFixed(0)+'</b><span>'+T.peak+' · '+lab(mx.month)+'</span></div><div><b>'+mn.index.toFixed(0)+'</b><span>'+T.low+' · '+lab(mn.month)+'</span></div><div><b>'+above+' / '+n+'</b><span>'+T.cnt+'</span></div>';
+/* chart 1 */
+var W=720,H=330,ml=46,mr=10,mt=24,mb=40,pw=W-ml-mr,ph=H-mt-mb;
+var ymax=Math.ceil(Math.max(250,mx.index*1.08)/50)*50;
+var y=function(v){return mt+ph-v/ymax*ph;};var bw=pw/n;
+var s='';for(var t=0;t<=ymax;t+=50){s+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y(t)+'" y2="'+y(t)+'"/><text x="'+(ml-6)+'" y="'+(y(t)+4)+'" text-anchor="end" font-size="11">'+t+'</text>';}
+s+='<text x="12" y="'+(mt+ph/2)+'" font-size="11" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+T.axis_y+'</text>';
+ms.forEach(function(m,i){var x=ml+i*bw+bw*.14,w=bw*.72,yy=y(m.index);
+ s+='<rect class="bar'+(m.partial?' pv':'')+'" data-i="'+i+'" tabindex="0" x="'+x+'" y="'+yy+'" width="'+w+'" height="'+(y(0)-yy)+'" fill="'+COL(m.index)+'" rx="2"/>';
+ s+='<text class="val" x="'+(x+w/2)+'" y="'+(yy-5)+'" text-anchor="middle">'+m.index.toFixed(0)+'</text>';
+ s+='<text x="'+(x+w/2)+'" y="'+(H-mb+15)+'" font-size="10" transform="rotate(-35 '+(x+w/2)+' '+(H-mb+15)+')" text-anchor="end">'+lab(m.month)+'</text>';});
+s+='<line class="ref" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y(100)+'" y2="'+y(100)+'"/><text class="ann" x="'+(W-mr-bw)+'" y="'+(y(100)-6)+'" text-anchor="end">Normal month = 100</text>';
+var c1=document.getElementById('c1');c1.innerHTML=svg(W,H,s);
+function tip1(i){var m=ms[i];return '<b>'+lab(m.month)+'</b>'+(m.partial?' ('+"provisional"+')':'')+'<br>'+T.tip_idx+': '+m.index.toFixed(1)+'<br>'+T.tip_w+': '+m.W+'<br>'+T.tip_base+': '+m.baseline_median_W+'<br>I / II / III: '+m.class_I+' / '+m.class_II+' / '+m.class_III;}
+bind(c1,tip1);
+/* chart 2 stacked counts */
+var mx2=Math.max.apply(null,ms.map(function(m){return m.class_I+m.class_II+m.class_III;}));var ymax2=Math.ceil(mx2*1.08/100)*100;
+var y2=function(v){return mt+ph-v/ymax2*ph;};var s2='';
+for(var t2=0;t2<=ymax2;t2+=100){s2+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y2(t2)+'" y2="'+y2(t2)+'"/><text x="'+(ml-6)+'" y="'+(y2(t2)+4)+'" text-anchor="end" font-size="11">'+t2+'</text>';}
+s2+='<text x="12" y="'+(mt+ph/2)+'" font-size="11" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+T.axis_c+'</text>';
+var CC=['#8c2f1a','#2f6f9f','#9aa3a8'];
+ms.forEach(function(m,i){var x=ml+i*bw+bw*.14,w=bw*.72,base=0,v=[m.class_I,m.class_II,m.class_III];
+ var yb=y2(0);s2+='<g class="bar'+(m.partial?' pv':'')+'" data-i="'+i+'" tabindex="0">';
+ [0,1,2].forEach(function(k){var hh=v[k]/ymax2*ph;yb-=hh;s2+='<rect x="'+x+'" y="'+yb+'" width="'+w+'" height="'+hh+'" fill="'+CC[k]+'"/>';});
+ s2+='</g><text x="'+(x+w/2)+'" y="'+(H-mb+15)+'" text-anchor="end" font-size="10" transform="rotate(-35 '+(x+w/2)+' '+(H-mb+15)+')">'+lab(m.month)+'</text>';});
+var c2=document.getElementById('c2');c2.innerHTML='<div class="lg">'+[0,1,2].map(function(k){return '<span><i style="background:'+CC[k]+'"></i>'+T.cls_lbl[k]+'</span>';}).join('')+'</div>'+svg(W,H,s2);
+bind(c2,function(i){var m=ms[i];return '<b>'+lab(m.month)+'</b><br>'+T.cls_lbl[0]+': '+m.class_I+'<br>'+T.cls_lbl[1]+': '+m.class_II+'<br>'+T.cls_lbl[2]+': '+m.class_III;});
+/* chart 3 software share */
+var mx3=Math.max.apply(null,ms.map(function(m){return m.software_share*100;}));var ymax3=Math.ceil(mx3*1.15/5)*5;
+var y3=function(v){return mt+ph-v/ymax3*ph;};var s3='';
+for(var t3=0;t3<=ymax3;t3+=5){s3+='<line class="grid" x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y3(t3)+'" y2="'+y3(t3)+'"/><text x="'+(ml-6)+'" y="'+(y3(t3)+4)+'" text-anchor="end" font-size="11">'+t3+'%</text>';}
+s3+='<text x="12" y="'+(mt+ph/2)+'" font-size="11" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+T.axis_s+'</text>';
+ms.forEach(function(m,i){var x=ml+i*bw+bw*.14,w=bw*.72,v=m.software_share*100,yy=y3(v);
+ s3+='<rect class="bar'+(m.partial?' pv':'')+'" data-i="'+i+'" tabindex="0" x="'+x+'" y="'+yy+'" width="'+w+'" height="'+(y3(0)-yy)+'" fill="#6b5b95" rx="2"/><text class="val" x="'+(x+w/2)+'" y="'+(yy-5)+'" text-anchor="middle">'+v.toFixed(1)+'</text><text x="'+(x+w/2)+'" y="'+(H-mb+15)+'" text-anchor="end" font-size="10" transform="rotate(-35 '+(x+w/2)+' '+(H-mb+15)+')">'+lab(m.month)+'</text>';});
+var c3=document.getElementById('c3');c3.innerHTML=svg(W,H,s3);
+bind(c3,function(i){var m=ms[i];return '<b>'+lab(m.month)+'</b><br>'+(m.software_share*100).toFixed(1)+'% ('+m.software+' / '+m.total+')';});
+document.getElementById('rows').innerHTML=ms.slice().reverse().map(function(m){return '<tr><td>'+m.month+(m.partial?' <span class="fine">('+"provisional"+')</span>':'')+'</td><td class="num">'+m.class_I+'</td><td class="num">'+m.class_II+'</td><td class="num">'+m.class_III+'</td><td class="num">'+m.W+'</td><td class="num">'+m.baseline_median_W+'</td><td class="num"><b>'+m.index.toFixed(1)+'</b></td><td class="num">'+(m.software_share*100).toFixed(1)+'%</td></tr>';}).join('');
 document.getElementById('q').textContent=d.queries_template;
 });})();
 </script></div></main><footer><div class="wrap cols"><p>Norte Regulatorio is an independent publication operated by Kaus Australis Castro Murrieta. Not affiliated with the FDA, COFEPRIS or any company named. Informational and educational content; not legal, regulatory, medical or investment advice. Data come from public sources (openFDA, FDA pages, the Federal Register, COFEPRIS) and must be verified at the official source before acting. Analyses are editorial opinion. The AI Kit is a guide and drafting aid, not a validated system for complaints, CAPA or 8D records; use your organization's own approved systems for regulated records.</p><div style="display:flex;flex-direction:column;gap:6px"><a href="../terms/">Terms of Use</a><a href="../terminos/">Términos de uso</a><a href="../privacy/">Privacy Notice</a><a href="https://billing.stripe.com/p/login/6oU14o8Gvgja2Nd94VaEE00">Manage subscription</a><span>Corrections and contact: hola@norteregulatorio.com</span><span>© 2026 Norte Regulatorio</span></div></div></footer></body></html>
