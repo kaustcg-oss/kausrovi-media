@@ -1,0 +1,64 @@
+{
+ "name": "Contract manufacturer directory (beta)",
+ "source": "openFDA device/registrationlisting, meta.last_updated 2026-09-28",
+ "accessed": "2026-10-11",
+ "firms": [
+  {
+   "name": "Jabil Inc.",
+   "search_term": "Jabil",
+   "listings": 1626,
+   "countries": "US 802 · CH 585 · MX 124 · DE 62 · CN 26 · SG 19 · DO 7 · MY 1",
+   "fda_contact_address": "10800 Roosevelt Blvd., Saint Petersburg, FL 33716, US"
+  },
+  {
+   "name": "Straits Orthopaedics (Mfg) Sdn Bhd",
+   "search_term": "Straits",
+   "listings": 990,
+   "countries": "MY 990",
+   "fda_contact_address": "PMT 850, Persiaran Cassia Selatan 8, Taman Perindustrian Batu Kawan, Bandar Cassia, 14110 Pulau Pinang, MY"
+  },
+  {
+   "name": "Avalign (several entities)",
+   "search_term": "Avalign",
+   "listings": 735,
+   "countries": "US 687 · DE 48",
+   "fda_contact_address": "Example record: NG Instruments, Inc dba Avalign Cutting Instruments, 4643 North State Road 15, Warsaw, IN 46582, US"
+  },
+  {
+   "name": "Tecomet",
+   "search_term": "Tecomet",
+   "listings": 694,
+   "countries": "US 691 · GB 3",
+   "fda_contact_address": "5307 95th Avenue, Kenosha, WI 53144, US"
+  },
+  {
+   "name": "Millstone Medical Outsourcing LLC",
+   "search_term": "Millstone",
+   "listings": 568,
+   "countries": "US 568",
+   "fda_contact_address": "580 Commerce Drive, Fall River, MA 02720, US"
+  },
+  {
+   "name": "Viant Medical, LLC",
+   "search_term": "Viant",
+   "listings": 265,
+   "countries": "US 220 · FR 18 · CR 14 · MX 12 · CN 1",
+   "fda_contact_address": "2 Hampshire Street, Suite 202, Foxborough, MA 02035, US"
+  },
+  {
+   "name": "The Cretex Companies, Inc.",
+   "search_term": "Cretex",
+   "listings": 260,
+   "countries": "US 260",
+   "fda_contact_address": "311 Lowell Ave., Elk River, MN 55330, US"
+  },
+  {
+   "name": "Flextronics International USA, Inc.",
+   "search_term": "Flextronics",
+   "listings": 208,
+   "countries": "MX 122 · SG 36 · CN 28 · US 9 · IL 8 · AT 2 · CH 2 · HU 1",
+   "fda_contact_address": "12455 Research Blvd, Austin, TX 78759, US"
+  }
+ ],
+ "global_countries": "US 25,328 · CN 12,039 · DE 8,024 · MX 3,483 · MY 2,202 · CH 1,576 · FR 1,206 · PK 1,166 · TW 1,141 · IN 900"
+}
