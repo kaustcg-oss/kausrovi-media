@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Issue 01 · Norte Regulatorio</title><meta name="description" content="Software changes, CAPA findings and six recalls on one day. Week of October 5–9, 2026.">
+<meta property="og:title" content="Issue 01 · Norte Regulatorio"><meta property="og:description" content="Software changes, CAPA findings and six recalls on one day. Week of October 5–9, 2026."><meta property="og:type" content="website">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:wght@500;600&display=swap"><link rel="stylesheet" href="../../assets/site.css"></head><body><header class="top"><div class="wrap"><a class="brand" href="../../"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,1 21,22 12,17 3,22" fill="var(--accent)"/><polygon points="12,1 12,17 3,22" fill="var(--signal)" opacity=".85"/></svg>Norte Regulatorio</a><nav class="links"><a href="../../#lookup">Company lookup</a><a href="../../issues/">Issues</a><a href="../../#plans">Plans</a><a href="../../#kit">AI Kit</a><a href="https://billing.stripe.com/p/login/6oU14o8Gvgja2Nd94VaEE00">Manage subscription</a><a href="../../es/" hreflang="es">Español</a></nav></div></header><main class="wrap"><div class="doc"><div class="eyebrow">Issue 01 · Week of October 5–9, 2026</div>
+<h1>Software changes, CAPA findings and six recalls on one day</h1>
+<p class="fine">Informational content prepared from public sources. Not legal or regulatory advice. Verify all data at the official source. All sources accessed 2026-10-10.</p>
+
+<h2>The week in 60 seconds</h2>
+<ul>
+<li>On October 6 the FDA posted two warning letters to device manufacturers: one about software with machine learning and no new premarket assessment, the other about a quality system lacking risk, design and supplier controls.</li>
+<li>Several Class II recalls with software causes were recorded on September 30, including Philips North America MRI systems, Abiomed and Criticare.</li>
+<li>A notice on removal and correction reports (21 CFR 806) is open for comment until October 30.</li>
+</ul>
+
+<h2>1. Warning letter to O.N. Diagnostics (machine-learning software)</h2>
+<p><strong>DATA:</strong> letter dated September 1, 2026, posted October 6, issued by CDRH. It concerns VirtuOst VFA 3.0.0 software. FDA states the release added a machine-learning algorithm and moved to a web architecture, and says it required premarket assessment. It also cites CAPA (ISO 13485:2016 clause 8.5.2), purchasing (clause 7.4.1) and the medical device reporting procedure (21 CFR 803). According to the letter, one CAPA update stayed pending for about 18 months and another CAPA was opened the day before the inspection.</p>
+<p><strong>ANALYSIS:</strong> software changes, even architectural ones, can be treated as device changes. A single letter does not support generalizing, but CAPA timeliness is a recurring theme.</p>
+<p class="fine">Source: <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/diagnostics-llc-730301-09012026">FDA warning letter to O.N. Diagnostics, LLC (730301)</a></p>
+
+<h2>2. Warning letter to Unilam Co., Ltd. (UV lamps)</h2>
+<p><strong>DATA:</strong> letter dated September 22, 2026, posted October 6, following a May 18–22, 2026 inspection in South Korea. FDA cites ISO 13485:2016 clauses 7.1 (risk), 7.3.1 (design and development), 7.4.1 and 7.4.2 (suppliers and changes), 7.6 (measuring equipment) and 8.2.6 (product monitoring), plus radiation requirements (21 CFR 1040.20), and asks for a response within 15 business days.</p>
+<p><strong>ANALYSIS:</strong> letters tied to inspections after the QMSR took effect (February 2, 2026) cite ISO 13485 clauses. If your system is mapped to ISO 13485, the language will look familiar.</p>
+<p class="fine">Source: <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/unilam-co-ltd-738562-09222026">FDA warning letter to Unilam Co., Ltd. (738562)</a></p>
+
+<h2>3. Software-related recalls at the end of September</h2>
+<p><strong>DATA:</strong> openFDA lists Class II recalls with software causes reported on September 30, 2026, including Philips North America MRI systems (Achieva 3.0T, Ingenia Elition, MR 7700; records Z-3233, Z-3239, Z-3242), where a software issue ends the exam during image reconstruction when manually adjusted scan parameters exceed available memory; an Abiomed recall (Z-3251) on firmware and software defects affecting pressure-signal accuracy and placement alarms; and a Criticare recall (Z-3253) where a setup-error alarm disables CO2 monitoring.</p>
+<p><strong>ANALYSIS:</strong> three distinct software failure types (memory limits, signal firmware, alarm logic). Useful input when you review boundary-condition and alarm test cases.</p>
+<p class="fine">Source: <a href="https://api.fda.gov/device/enforcement.json?search=report_date:%5B20260930+TO+20260930%5D">openFDA device/enforcement, report date 2026-09-30</a></p>
+
+<h2>4. ICU Medical correction for IV tubing sets</h2>
+<p><strong>DATA:</strong> on October 5 the FDA updated its notice on certain ICU Medical IV tubing sets (early alert May 27, 2026; Class II). Black specks and discoloration appear in the drip chamber. The company attributes them to the PVC material, not contamination, and says they do not enter the fluid path. Users are asked to inspect before use and segregate product with loose particulate; no returns requested. No injuries or deaths reported as of July 16, 2026.</p>
+<p><strong>ANALYSIS:</strong> a correction centered on instructions for use. A good test case for your recall vs. correction vs. customer-communication criteria.</p>
+<p class="fine">Source: <a href="https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/iv-tubing-set-correction-icu-medical-updates-use-instructions-iv-tubing-sets">FDA notice on ICU Medical</a></p>
+
+<h2>5. Open comments on removal and correction reports</h2>
+<p><strong>DATA:</strong> Federal Register notice of August 31, 2026 (91 FR 55859) on the 21 CFR 806 information collection; comments due October 30, 2026. FDA estimates 925 respondents and 9,250 hours per year for device reports (Form FDA 5072).</p>
+<p><strong>ANALYSIS:</strong> if your team prepares these reports, this is the chance to comment on the real burden.</p>
+<p class="fine">Source: <a href="https://www.federalregister.gov/documents/2026/08/31/2026-17675/agency-information-collection-activities-proposed-collection-comment-request-medical-devices-reports">Federal Register 2026-17675</a></p>
+
+<h2>Trend: software as a stated cause</h2>
+<p><strong>DATA</strong> (openFDA, Oct 10, 2025 to Oct 9, 2026): of 3,178 recall records, 162 mention “software” in the reason for recall (5.1%). By quarter: 62 (Q4 2025), 26 (Q1 2026), 21 (Q2 2026) and 53 (Q3 2026). Boston Scientific accounts for 27 of the 62 in Q4 2025.</p>
+<p><strong>ANALYSIS:</strong> software appears recurrently, and a few manufacturers drive the peaks. That is not evidence of an industry-wide trend. Counts are records (per product), not independent events.</p>
+<p class="fine">Reproducible queries: <a href="https://api.fda.gov/device/enforcement.json?search=report_date:%5B20251010+TO+20261009%5D&amp;limit=1">total records</a> · <a href="https://api.fda.gov/device/enforcement.json?search=report_date:%5B20251010+TO+20261009%5D+AND+reason_for_recall:software&amp;limit=1">“software” in reason</a> (see meta.results.total)</p>
+
+<h2>Tool of the week: 10-question complaint triage</h2>
+<p>A checklist. It does not replace your procedure or the reportability determination.</p>
+<ol>
+<li>Is there a serious injury, death, or risk of either (actual or potential)?</li>
+<li>Could the device have caused or contributed to the event, or did a malfunction occur that could do so if it recurs?</li>
+<li>What is the date the company became aware?</li>
+<li>Were product, lot or UDI identified?</li>
+<li>Actual use vs. intended use?</li>
+<li>What is the history of similar complaints, including those coded “no fault found”?</li>
+<li>Is the complaint linked to a hazard in your risk analysis (ISO 14971)?</li>
+<li>Was it decided whether an investigation is needed, by whom and when?</li>
+<li>Was the MDR reportability decision documented with date and owner?</li>
+<li>Was the written criterion for opening a CAPA applied, or was not opening one justified?</li>
+</ol>
+
+<h2>Mexico radar</h2>
+<p><strong>DATA:</strong> according to Emergo by UL, NOM-241-SSA1-2025 (Good Manufacturing Practices for Medical Devices) was published on April 4, 2025 and took effect on November 30, 2025. Verify against the official text in the Diario Oficial de la Federación.</p>
+<p class="fine">Source: <a href="https://www.emergobyul.com/news/mexicos-cofepris-publishes-final-version-gmp-standard">Emergo by UL</a></p>
+
+<p class="note" style="margin-top:32px">Spotted an error? Write to hola@kausrovi.com and we will correct it in the next issue.</p>
+</div></main><footer><div class="wrap cols"><p>Informational and educational content. It is not legal or regulatory advice. Data come from public sources (openFDA, FDA pages, the Federal Register, COFEPRIS) and must be verified at the official source before acting. Analyses are editorial opinion. Norte Regulatorio is independent and does not represent any company, employer or government agency. The AI Kit is a guide and drafting aid, not a validated system for complaints, CAPA or 8D records; use your organization's own approved systems for regulated records.</p><div style="display:flex;flex-direction:column;gap:6px"><a href="../../terms/">Terms of Use</a><a href="../../privacy/">Privacy Notice</a><a href="https://billing.stripe.com/p/login/6oU14o8Gvgja2Nd94VaEE00">Manage subscription</a><span>Contact: hola@kausrovi.com</span><span>© 2026 Norte Regulatorio</span></div></div></footer></body></html>
