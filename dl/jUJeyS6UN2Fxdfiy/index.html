@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download AI Kit 1.0 · Norte Regulatorio</title><meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:wght@500;600&display=swap"><link rel="stylesheet" href="../../assets/site.css">
+<style>
+.dlbox{max-width:620px;margin:40px auto 56px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:28px}
+.dlbox h1{font:600 1.7rem/1.25 var(--serif);margin:0 0 6px}
+.dlbox .sub{color:var(--muted);margin:0 0 22px}
+.dlbox label{display:block;font-weight:600;margin-bottom:6px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row input{flex:1 1 220px;min-width:0;font:500 1.05rem var(--mono);letter-spacing:.04em;padding:11px 12px;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--fg);text-transform:uppercase}
+.row button{flex:0 0 auto;font:600 1rem var(--sans);padding:11px 18px;border:0;border-radius:6px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.row button[disabled]{opacity:.6;cursor:wait}
+#msg{min-height:1.6em;margin:12px 0 0;font-size:.95rem}
+#msg.err{color:var(--c1)} #msg.ok{color:var(--c3)}
+.steps{margin:22px 0 0;padding-top:18px;border-top:1px solid var(--rule)}
+.steps h2{font:600 1.05rem var(--sans);margin:0 0 8px}
+.steps ol{margin:0 0 14px;padding-left:20px}
+.note{font-size:.88rem;color:var(--muted);background:var(--bg);border-left:3px solid var(--signal);padding:10px 12px;margin-top:16px}
+</style></head><body>
+<header class="top"><div class="wrap"><a class="brand" href="../../"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,1 21,22 12,17 3,22" fill="var(--accent)"/><polygon points="12,1 12,17 3,22" fill="var(--signal)" opacity=".85"/></svg>Norte Regulatorio</a></div></header>
+<main class="wrap"><div class="dlbox">
+<h1>AI Kit 1.0</h1>
+<p class="sub">Complaints, CAPA and 8D · <span lang="es">Quejas, CAPA y 8D</span></p>
+<form id="f" autocomplete="off">
+<label for="pw">Password from your purchase · <span lang="es">Contraseña de tu compra</span></label>
+<div class="row"><input id="pw" name="pw" required spellcheck="false" autocapitalize="characters" placeholder="XXXX-XXXX-XXXX-XXXX" aria-describedby="msg"><button id="go" type="submit">Download · Descargar</button></div>
+<p id="msg" role="status" aria-live="polite"></p>
+</form>
+<div class="steps">
+<h2>After the download</h2>
+<ol><li>Open the ZIP normally (double-click). No password is needed once downloaded.</li><li>In Claude, go to Settings &gt; Capabilities &gt; Skills and upload each file from <em>skills_ready_to_upload</em>.</li><li>Read the Quick Start Guide and try each Skill with fictitious data first.</li></ol>
+<h2 lang="es">Después de descargar</h2>
+<ol lang="es"><li>Abre el ZIP normalmente (doble clic). Ya no pide contraseña.</li><li>En Claude, ve a Configuración &gt; Capacidades &gt; Skills y sube cada archivo de <em>skills_ready_to_upload</em>.</li><li>Lee la Guía de uso y prueba cada Skill primero con datos ficticios.</li></ol>
+<p class="note">Single-user license; please do not share this page or the password. A guide and drafting aid, not a validated system. Help: hola@norteregulatorio.com<br><span lang="es">Licencia de un solo usuario; no compartas esta página ni la contraseña. Es una guía y apoyo de redacción, no un sistema validado.</span></p>
+</div></div></main>
+<script>
+(function(){
+  var FILE="Norte_Regulatorio_AI_Kit_v1.0.zip", ITER=250000;
+  var f=document.getElementById('f'), pw=document.getElementById('pw'), go=document.getElementById('go'), msg=document.getElementById('msg');
+  function say(t,c){msg.textContent=t;msg.className=c||'';}
+  if(!(window.crypto&&crypto.subtle)){say('This browser cannot decrypt the file. Please use a current version of Chrome, Edge, Safari or Firefox. · Usa una versión actual de Chrome, Edge, Safari o Firefox.','err');go.disabled=true;return;}
+  var blobPromise=null;
+  function getBlob(){ if(!blobPromise){ blobPromise=fetch('kit.bin',{cache:'no-store'}).then(function(r){ if(!r.ok) throw new Error('fetch'); return r.arrayBuffer(); }); } return blobPromise; }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var p=pw.value.trim().toUpperCase().replace(/\s+/g,'');
+    if(!p){pw.focus();return;}
+    go.disabled=true; say('Decrypting… · Descifrando…');
+    getBlob().then(function(buf){
+      var b=new Uint8Array(buf);
+      if(String.fromCharCode(b[0],b[1],b[2],b[3])!=='NRK1') throw new Error('format');
+      var salt=b.slice(4,20), iv=b.slice(20,32), ct=b.slice(32);
+      return crypto.subtle.importKey('raw',new TextEncoder().encode(p),'PBKDF2',false,['deriveKey'])
+        .then(function(base){return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:ITER,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);})
+        .then(function(key){return crypto.subtle.decrypt({name:'AES-GCM',iv:iv},key,ct).catch(function(){var x=new Error('pw');x.pw=1;throw x;});});
+    }).then(function(plain){
+      var url=URL.createObjectURL(new Blob([plain],{type:'application/zip'}));
+      var a=document.createElement('a'); a.href=url; a.download=FILE; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){URL.revokeObjectURL(url);},60000);
+      say('Done: '+FILE+' saved to your Downloads folder. · Listo: se guardó en tu carpeta de Descargas.','ok');
+    }).catch(function(err){
+      if(err&&err.pw){say('That password does not match. Copy it exactly from your purchase confirmation or email. · La contraseña no coincide; cópiala tal cual de tu confirmación o correo.','err');}
+      else{blobPromise=null;say('The download could not start. Check your connection and try again, or write to hola@norteregulatorio.com. · No se pudo descargar; revisa tu conexión e intenta de nuevo.','err');}
+    }).then(function(){go.disabled=false;});
+  });
+})();
+</script>
+</body></html>
