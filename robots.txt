@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dl/
+
+Sitemap: https://norteregulatorio.com/sitemap.xml
