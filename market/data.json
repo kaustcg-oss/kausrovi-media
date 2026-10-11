@@ -1,0 +1,285 @@
+{
+ "as_of": "2026-10-10",
+ "cap_note": "Market caps: companiesmarketcap.com company pages (fetched 2026-10-10; second check stockanalysis.com within ~4%). 12-month change as shown by companiesmarketcap.com.",
+ "fda_window": "2025-10-10 to 2026-10-09 (openFDA data last updated 2026-09-30)",
+ "companies": [
+  {
+   "name": "Abbott",
+   "ticker": "ABT",
+   "exchange": "NYSE",
+   "cap": 173.5,
+   "chg12m": -25.29,
+   "diversified": true,
+   "cap_source": "https://companiesmarketcap.com/abbott-laboratories/marketcap/",
+   "recalls": {
+    "class_I": 9,
+    "class_II": 9,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Abbott\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [
+    {
+     "date": "2026-01-23",
+     "url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/abbott-diabetes-care-inc-722046-01232026",
+     "subject": "CDRH warning letter to Abbott Diabetes Care, Inc. (MARCS-CMS 722046): Quality System violations (design transfer, acceptance activities, sampling, design validation) for FreeStyle Libre CGM systems, including FreeStyle Libre 3",
+     "center": "CDRH (devices)"
+    }
+   ],
+   "leadership": []
+  },
+  {
+   "name": "Intuitive Surgical",
+   "ticker": "ISRG",
+   "exchange": "NASDAQ",
+   "cap": 149.8,
+   "chg12m": -4.46,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/intuitive-surgical/marketcap/",
+   "recalls": {
+    "class_I": 1,
+    "class_II": 16,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Intuitive\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": []
+  },
+  {
+   "name": "Medtronic",
+   "ticker": "MDT",
+   "exchange": "NYSE",
+   "cap": 113.2,
+   "chg12m": -8.31,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/medtronic/marketcap/",
+   "recalls": {
+    "class_I": 1,
+    "class_II": 58,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Medtronic\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": []
+  },
+  {
+   "name": "Stryker",
+   "ticker": "SYK",
+   "exchange": "NYSE",
+   "cap": 105.6,
+   "chg12m": -25.41,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/stryker-corporation/marketcap/",
+   "recalls": {
+    "class_I": 0,
+    "class_II": 57,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Stryker\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": [
+    {
+     "role": "CEO",
+     "out": "Kevin Lobo",
+     "in": "Spencer Stiles",
+     "announced": "2026-10-06",
+     "effective": "2027-01-01",
+     "summary": "Under a planned succession, COO Spencer Stiles takes over as CEO on 1 Jan 2027 and long-time CEO Kevin Lobo becomes executive chair.",
+     "source": "https://www.sec.gov/Archives/edgar/data/0000310764/000119312526414956/d84795dex991.htm"
+    }
+   ]
+  },
+  {
+   "name": "Boston Scientific",
+   "ticker": "BSX",
+   "exchange": "NYSE",
+   "cap": 61.9,
+   "chg12m": -56.08,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/boston-scientific/marketcap/",
+   "recalls": {
+    "class_I": 39,
+    "class_II": 48,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Boston Scientific\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": []
+  },
+  {
+   "name": "BD (Becton Dickinson)",
+   "ticker": "BDX",
+   "exchange": "NYSE",
+   "cap": 49.8,
+   "chg12m": -5.64,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/becton-dickinson/marketcap/",
+   "recalls": {
+    "class_I": 15,
+    "class_II": 59,
+    "class_III": 0
+   },
+   "openfda_query": "Sum of three queries: recalling_firm:\"Becton\" (I:10, II:15) + recalling_firm:\"Bard\" (I:3, II:27) + recalling_firm:\"CareFusion\" (I:2, II:17), each with +AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [
+    {
+     "date": "2026-04-30",
+     "url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/carefusion-213-llc-722729-04302026",
+     "subject": "CDER (not CDRH) warning letter to CareFusion 213, LLC, a BD subsidiary (MARCS-CMS 722729): drug CGMP deficiencies at the El Paso, TX sterile drug facility",
+     "center": "CDER (drugs)"
+    }
+   ],
+   "leadership": [
+    {
+     "role": "CFO",
+     "out": "Chris DelOrefice",
+     "in": "Vitor Roque (interim from Dec 2025; permanent from 2026-05-07)",
+     "announced": "2025-10-15",
+     "effective": "2025-12-05",
+     "summary": "CFO Chris DelOrefice left for a new opportunity and finance SVP Vitor Roque became interim CFO. Roque was named permanent CFO on 7 May 2026.",
+     "source": "https://news.bd.com/2025-10-15-BD-Announces-CFO-Transition-Plan"
+    }
+   ]
+  },
+  {
+   "name": "Siemens Healthineers",
+   "ticker": "SHL",
+   "exchange": "XETRA (Frankfurt)",
+   "cap": 49.1,
+   "chg12m": -21.84,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/siemens-healthineers/marketcap/",
+   "recalls": {
+    "class_I": 1,
+    "class_II": 33,
+    "class_III": 2
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Siemens\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": []
+  },
+  {
+   "name": "Edwards Lifesciences",
+   "ticker": "EW",
+   "exchange": "NYSE",
+   "cap": 47.9,
+   "chg12m": 8.49,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/edwards-lifesciences/marketcap/",
+   "recalls": {
+    "class_I": 0,
+    "class_II": 1,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Edwards Lifesciences\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": [
+    {
+     "role": "CFO",
+     "out": "Scott Ullem",
+     "in": "Theodora (Doretta) Mistras",
+     "announced": "2025-10-30 (departure plan); 2026-05-04 (successor named)",
+     "effective": "end of May 2026",
+     "summary": "Long-time CFO Scott Ullem said he would hand over by mid-2026 and stay on as an advisor. Former Viatris CFO Doretta Mistras was named successor.",
+     "source": "https://edwards.com/newsroom/news/2025-10-30-edwards-lifesciences-announces-cfo-transition-plan"
+    }
+   ]
+  },
+  {
+   "name": "ResMed",
+   "ticker": "RMD",
+   "exchange": "NYSE",
+   "cap": 32.4,
+   "chg12m": -15.42,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/resmed/marketcap/",
+   "recalls": {
+    "class_I": 1,
+    "class_II": 0,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"ResMed\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": [
+    {
+     "role": "CFO",
+     "out": "Brett Sandercock",
+     "in": "Aaron Bloomer",
+     "announced": "2026-04-30",
+     "effective": "2026-05-04",
+     "summary": "CFO Brett Sandercock retired and Aaron Bloomer was named successor. Sandercock stays as an advisor to the CEO through 2027.",
+     "source": "https://www.sec.gov/Archives/edgar/data/0000943819/000119312526197282/d50610dex991.htm"
+    }
+   ]
+  },
+  {
+   "name": "Dexcom",
+   "ticker": "DXCM",
+   "exchange": "NASDAQ",
+   "cap": 31.8,
+   "chg12m": 27.67,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/dexcom/marketcap/",
+   "recalls": {
+    "class_I": 1,
+    "class_II": 4,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Dexcom\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": [
+    {
+     "role": "CEO",
+     "out": "Kevin Sayer",
+     "in": "Jake Leach",
+     "announced": "2025-07-30 (before window)",
+     "effective": "2026-01-01",
+     "summary": "COO Jake Leach became president and CEO on 1 Jan 2026, succeeding Kevin Sayer. The change was announced in July 2025 but took effect inside the window.",
+     "source": "https://www.homecaremag.com/news/jake-leach-assumes-role-dexcom-president-ceo"
+    }
+   ]
+  },
+  {
+   "name": "Alcon",
+   "ticker": "ALC",
+   "exchange": "SIX Swiss Exchange / NYSE",
+   "cap": 30.5,
+   "chg12m": -17.53,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/alcon/marketcap/",
+   "recalls": {
+    "class_I": 1,
+    "class_II": 7,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Alcon\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": []
+  },
+  {
+   "name": "GE HealthCare",
+   "ticker": "GEHC",
+   "exchange": "NASDAQ",
+   "cap": 29.8,
+   "chg12m": -14.13,
+   "diversified": false,
+   "cap_source": "https://companiesmarketcap.com/ge-healthcare-technologies/marketcap/",
+   "recalls": {
+    "class_I": 3,
+    "class_II": 79,
+    "class_III": 0
+   },
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"GE\"+AND+report_date:[20251010+TO+20261009]&count=classification.exact",
+   "warning_letters": [],
+   "leadership": [
+    {
+     "role": "CFO",
+     "out": "Jay Saccaro",
+     "in": "William (Bill) Grogan (George Newcomb interim in between)",
+     "announced": "2026-07-23 (departure); 2026-08-18 (successor)",
+     "effective": "Saccaro through 2026-08-14; Grogan from 2026-09-14",
+     "summary": "CFO Jay Saccaro left for a larger role outside medtech, with controller George Newcomb as interim CFO. Former Xylem CFO Bill Grogan started on 14 Sep 2026.",
+     "source": "https://www.sec.gov/Archives/edgar/data/0001932393/000193239326000039/form8-kex99_72126.htm"
+    }
+   ]
+  }
+ ]
+}
