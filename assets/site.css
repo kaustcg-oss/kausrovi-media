@@ -126,3 +126,20 @@ td:first-child{font-weight:500}
 .nwhero.ph{background:#0b2d3a url(img/tijuana-arco.jpg) center/cover}
 .nwhero.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,36,44,.93),rgba(8,36,44,.72) 60%,rgba(184,86,31,.45))}
 .nwhero.ph>*{position:relative;z-index:1}.nwhero.ph svg.sky{display:none}
+
+/* load sequence: one orchestrated moment on the home hero */
+@media (prefers-reduced-motion:no-preference){
+.heroB .hero>div:first-child>*{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.heroB .hero>div:first-child>*:nth-child(1){animation-delay:.1s}
+.heroB .hero>div:first-child>*:nth-child(2){animation-delay:.25s}
+.heroB .hero>div:first-child>*:nth-child(3){animation-delay:.4s}
+.heroB .hero>div:first-child>*:nth-child(4){animation-delay:.55s}
+.heroB .stat{opacity:0;animation:rise .8s cubic-bezier(.2,.7,.2,1) .7s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+}
+.band{position:relative;background:#0b2d3a url(img/robot.jpg) center/cover;color:#fff;border-bottom:0}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,36,44,.95),rgba(8,36,44,.82))}
+.band .wrap{position:relative}
+.band .pillar{border-top-color:#ffb27a!important}.band h3,.band p{color:#fff}.band p{color:#dbe8ea}
+
+.heroB,.band,.nwhero.ph{background-repeat:no-repeat;background-size:cover}
