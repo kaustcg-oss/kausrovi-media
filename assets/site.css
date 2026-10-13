@@ -113,3 +113,16 @@ td:first-child{font-weight:500}
 .corrbox{border-left:0!important;padding-left:0!important}
 .eyebrow{text-transform:none;letter-spacing:.02em;font-size:.82rem}
 .kitd summary{cursor:pointer;font-weight:600;color:var(--accent);padding:6px 0}
+
+.heroB{position:relative;background:#0b2d3a url(img/tijuana-panorama.jpg) center/cover;color:#fff;border-bottom:0}
+.heroB:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,36,44,.94),rgba(8,36,44,.78) 55%,rgba(8,36,44,.4))}
+.heroB .wrap{position:relative;padding-top:54px;padding-bottom:54px}
+.heroB h1,.heroB .lede,.heroB .stat p{color:#fff}.heroB .lede{color:#e3eef0}
+.heroB .eyebrow{color:#ffcf9e}.heroB .stat{border-left-color:#ffb27a}.heroB .stat .num{color:#ffb27a}
+.heroB .fine{color:#c5d6da}
+.heroB .btn.ghost{color:#fff;border-color:rgba(255,255,255,.7);background:transparent}
+.photocr{font-size:.74rem;color:var(--muted);margin:10px 0 0}
+
+.nwhero.ph{background:#0b2d3a url(img/tijuana-arco.jpg) center/cover}
+.nwhero.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,36,44,.93),rgba(8,36,44,.72) 60%,rgba(184,86,31,.45))}
+.nwhero.ph>*{position:relative;z-index:1}.nwhero.ph svg.sky{display:none}
