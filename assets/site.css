@@ -166,3 +166,5 @@ td:first-child{font-weight:500}
 @keyframes wlg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){.wlt i{animation:none!important}}
 @media (max-width:560px){.wlrow{grid-template-columns:1fr 64px}.wlt{grid-column:1/3;order:3}.wll{grid-column:1}.wlv{grid-column:2;grid-row:1}}
+
+.cologo{margin:28px 0 -8px}.cologo img{display:block;width:auto;max-width:70%}
