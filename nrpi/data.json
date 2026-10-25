@@ -2,8 +2,8 @@
   "name": "Norte Recall Pressure Index (NRPI)",
   "method": "Monthly weighted score W = 10*ClassI + 3*ClassII + 1*ClassIII, where each class count is the number of openFDA device enforcement (recall) records whose report_date falls in the calendar month. Index for month m = 100 * W_m / median(W over the 12 calendar months immediately before m). Index computed for 2025-10..2026-09; 2024-10..2025-09 serve only as baseline. software_share = software / (ClassI+ClassII+ClassIII), where software = records in the month whose reason_for_recall contains the token 'software' (any class). Rounding: index to 0.1, share to 4 decimals.",
   "queries_template": "https://api.fda.gov/device/enforcement.json?search=report_date:[YYYYMMDD+TO+YYYYMMDD]+AND+classification:\"Class+I\"&limit=1 (likewise \"Class+II\", \"Class+III\"); software: https://api.fda.gov/device/enforcement.json?search=report_date:[YYYYMMDD+TO+YYYYMMDD]+AND+reason_for_recall:software&limit=1. Value read: meta.results.total. HTTP 404 'No matches found' = 0. Cross-check per month: https://api.fda.gov/device/enforcement.json?search=report_date:[YYYYMMDD+TO+YYYYMMDD]&count=classification.exact",
-  "source": "openFDA device enforcement endpoint (api.fda.gov/device/enforcement.json), meta.last_updated 2026-09-30",
-  "accessed": "2026-10-10",
+  "source": "openFDA device enforcement endpoint (api.fda.gov/device/enforcement.json), meta.last_updated 2026-10-14",
+  "accessed": "2026-10-24",
   "months": [
     {
       "month": "2024-10",
@@ -291,7 +291,19 @@
       "total": 278,
       "index": 100.4,
       "baseline_median_W": 1039.5,
-      "software_share": 0.1259,
+      "software_share": 0.1259
+    },
+    {
+      "month": "2026-10",
+      "class_I": 3,
+      "class_II": 174,
+      "class_III": 10,
+      "software": 31,
+      "total": 187,
+      "W": 562,
+      "baseline_median_W": 1073.5,
+      "index": 52.4,
+      "software_share": 0.1658,
       "partial": true
     }
   ],
@@ -327,11 +339,11 @@
     "All 96 specified queries plus 24 count=classification.exact cross-check queries were run via WebFetch on 2026-10-10. No values are missing or estimated.",
     "Class III queries for 2025-02, 2025-03, 2025-04, 2025-05, 2026-01, 2026-06, 2026-07, 2026-09 returned an HTTP error (openFDA returns 404 'No matches found' for empty result sets); each was retried once and failed again, and the same-month count=classification.exact query listed no Class III term, confirming 0.",
     "Every per-class meta.results.total matched the same-month count=classification.exact breakdown exactly; no records with other classification values appeared in any month.",
-    "2026-09 is flagged partial: openFDA meta.last_updated is 2026-09-30, and FDA posts enforcement reports weekly, so records for late September may not yet be loaded. Its index is likely understated.",
     "Records are not events: one recall action can produce many records (one per product/model/lot group). A single large multi-product recall can move a month substantially (e.g. 2025-09 Class III = 71).",
     "report_date is the date the record appeared in FDA's weekly Enforcement Report, i.e. after FDA classified the recall, not when the problem occurred or when the firm initiated the recall.",
     "Months are calendar months on report_date; inclusive ranges [first day TO last day].",
     "The software count is a full-text token match on reason_for_recall, not an FDA root-cause category; it can include records that mention software incidentally and miss software issues described in other words.",
-    "openFDA data is unvalidated and is revised retroactively; rerunning the queries later may give slightly different counts, especially for recent months."
+    "openFDA data is unvalidated and is revised retroactively; rerunning the queries later may give slightly different counts, especially for recent months.",
+    "2026-09 was completed on 2026-10-24 (openFDA meta.last_updated 2026-10-14, after month end): counts unchanged from the partial reading. 2026-10 is flagged partial: records only through the 2026-10-14 openFDA update; its index is likely understated."
   ]
 }
