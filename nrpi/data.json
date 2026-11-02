@@ -2,8 +2,8 @@
   "name": "Norte Recall Pressure Index (NRPI)",
   "method": "Monthly weighted score W = 10*ClassI + 3*ClassII + 1*ClassIII, where each class count is the number of openFDA device enforcement (recall) records whose report_date falls in the calendar month. Index for month m = 100 * W_m / median(W over the 12 calendar months immediately before m). Index computed for 2025-10..2026-09; 2024-10..2025-09 serve only as baseline. software_share = software / (ClassI+ClassII+ClassIII), where software = records in the month whose reason_for_recall contains the token 'software' (any class). Rounding: index to 0.1, share to 4 decimals.",
   "queries_template": "https://api.fda.gov/device/enforcement.json?search=report_date:[YYYYMMDD+TO+YYYYMMDD]+AND+classification:\"Class+I\"&limit=1 (likewise \"Class+II\", \"Class+III\"); software: https://api.fda.gov/device/enforcement.json?search=report_date:[YYYYMMDD+TO+YYYYMMDD]+AND+reason_for_recall:software&limit=1. Value read: meta.results.total. HTTP 404 'No matches found' = 0. Cross-check per month: https://api.fda.gov/device/enforcement.json?search=report_date:[YYYYMMDD+TO+YYYYMMDD]&count=classification.exact",
-  "source": "openFDA device enforcement endpoint (api.fda.gov/device/enforcement.json), meta.last_updated 2026-10-14",
-  "accessed": "2026-10-24",
+  "source": "openFDA device enforcement endpoint (api.fda.gov/device/enforcement.json), meta.last_updated 2026-10-21",
+  "accessed": "2026-11-02",
   "months": [
     {
       "month": "2024-10",
@@ -295,15 +295,15 @@
     },
     {
       "month": "2026-10",
-      "class_I": 3,
-      "class_II": 174,
-      "class_III": 10,
+      "class_I": 5,
+      "class_II": 229,
+      "class_III": 11,
       "software": 31,
-      "total": 187,
-      "W": 562,
+      "total": 245,
+      "W": 748,
       "baseline_median_W": 1073.5,
-      "index": 52.4,
-      "software_share": 0.1658,
+      "index": 69.7,
+      "software_share": 0.1265,
       "partial": true
     }
   ],
@@ -344,6 +344,6 @@
     "Months are calendar months on report_date; inclusive ranges [first day TO last day].",
     "The software count is a full-text token match on reason_for_recall, not an FDA root-cause category; it can include records that mention software incidentally and miss software issues described in other words.",
     "openFDA data is unvalidated and is revised retroactively; rerunning the queries later may give slightly different counts, especially for recent months.",
-    "2026-09 was completed on 2026-10-24 (openFDA meta.last_updated 2026-10-14, after month end): counts unchanged from the partial reading. 2026-10 is flagged partial: records only through the 2026-10-14 openFDA update; its index is likely understated."
+    "2026-09 was completed on 2026-10-24 (openFDA meta.last_updated 2026-10-14, after month end): counts unchanged from the partial reading. 2026-10 is flagged partial: records only through the 2026-10-21 openFDA update (re-read 2026-11-02); its index is likely understated."
   ]
 }
