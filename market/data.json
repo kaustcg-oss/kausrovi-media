@@ -1,22 +1,22 @@
 {
- "as_of": "2026-11-02",
- "cap_note": "Market caps: companiesmarketcap.com company pages (fetched 2026-11-02). 12-month change as shown by companiesmarketcap.com.",
- "fda_window": "2025-11-02 to 2026-11-01 (openFDA data last updated 2026-10-21)",
+ "as_of": "2026-11-09",
+ "cap_note": "Market caps: companiesmarketcap.com company pages (fetched 2026-11-09). 12-month change as shown by companiesmarketcap.com.",
+ "fda_window": "2025-11-09 to 2026-11-08 (openFDA data last updated 2026-10-28)",
  "companies": [
   {
    "name": "Abbott",
    "ticker": "ABT",
    "exchange": "NYSE",
-   "cap": 185.0,
-   "chg12m": -14.82,
+   "cap": 190.4,
+   "chg12m": -12.68,
    "diversified": true,
    "cap_source": "https://companiesmarketcap.com/abbott-laboratories/marketcap/",
    "recalls": {
     "class_I": 4,
-    "class_II": 9,
+    "class_II": 10,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Abbott\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Abbott\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [
     {
      "date": "2026-01-23",
@@ -31,8 +31,8 @@
    "name": "Intuitive Surgical",
    "ticker": "ISRG",
    "exchange": "NASDAQ",
-   "cap": 152.6,
-   "chg12m": -19.14,
+   "cap": 160.0,
+   "chg12m": -17.34,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/intuitive-surgical/marketcap/",
    "recalls": {
@@ -40,7 +40,7 @@
     "class_II": 16,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Intuitive\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Intuitive\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -48,16 +48,16 @@
    "name": "Medtronic",
    "ticker": "MDT",
    "exchange": "NYSE",
-   "cap": 123.5,
-   "chg12m": 6.44,
+   "cap": 130.2,
+   "chg12m": 9.86,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/medtronic/marketcap/",
    "recalls": {
     "class_I": 1,
-    "class_II": 61,
+    "class_II": 69,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Medtronic\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Medtronic\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -65,8 +65,8 @@
    "name": "Stryker",
    "ticker": "SYK",
    "exchange": "NYSE",
-   "cap": 111.1,
-   "chg12m": -18.51,
+   "cap": 123.6,
+   "chg12m": -9.24,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/stryker-corporation/marketcap/",
    "recalls": {
@@ -74,7 +74,7 @@
     "class_II": 58,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Stryker\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Stryker\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -92,16 +92,16 @@
    "name": "Boston Scientific",
    "ticker": "BSX",
    "exchange": "NYSE",
-   "cap": 60.8,
-   "chg12m": -58.32,
+   "cap": 62.0,
+   "chg12m": -57.64,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/boston-scientific/marketcap/",
    "recalls": {
     "class_I": 12,
-    "class_II": 42,
+    "class_II": 83,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Boston Scientific\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Boston Scientific\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -109,16 +109,16 @@
    "name": "BD (Becton Dickinson)",
    "ticker": "BDX",
    "exchange": "NYSE",
-   "cap": 53.9,
-   "chg12m": 10.73,
+   "cap": 57.7,
+   "chg12m": 19.14,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/becton-dickinson/marketcap/",
    "recalls": {
     "class_I": 14,
-    "class_II": 56,
+    "class_II": 51,
     "class_III": 0
    },
-   "openfda_query": "Sum of three queries: recalling_firm:\"Becton\" (I:10, II:11) + recalling_firm:\"Bard\" (I:3, II:28) + recalling_firm:\"CareFusion\" (I:1, II:17), each with +AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "Sum of three queries: recalling_firm:\"Becton\" (I:10, II:11) + recalling_firm:\"Bard\" (I:3, II:28) + recalling_firm:\"CareFusion\" (I:1, II:12), each with +AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [
     {
      "date": "2026-04-30",
@@ -143,16 +143,16 @@
    "name": "Siemens Healthineers",
    "ticker": "SHL",
    "exchange": "XETRA (Frankfurt)",
-   "cap": 53.9,
-   "chg12m": -15.37,
+   "cap": 55.5,
+   "chg12m": -0.89,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/siemens-healthineers/marketcap/",
    "recalls": {
     "class_I": 1,
-    "class_II": 34,
+    "class_II": 33,
     "class_III": 2
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Siemens\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Siemens\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -160,8 +160,8 @@
    "name": "Edwards Lifesciences",
    "ticker": "EW",
    "exchange": "NYSE",
-   "cap": 53.0,
-   "chg12m": 11.59,
+   "cap": 58.7,
+   "chg12m": 23.9,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/edwards-lifesciences/marketcap/",
    "recalls": {
@@ -169,7 +169,7 @@
     "class_II": 1,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Edwards Lifesciences\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Edwards Lifesciences\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -187,8 +187,8 @@
    "name": "GE HealthCare",
    "ticker": "GEHC",
    "exchange": "NASDAQ",
-   "cap": 34.6,
-   "chg12m": 2.82,
+   "cap": 37.2,
+   "chg12m": 12.11,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/ge-healthcare-technologies/marketcap/",
    "recalls": {
@@ -196,7 +196,7 @@
     "class_II": 58,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"GE\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"GE\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -214,16 +214,16 @@
    "name": "Alcon",
    "ticker": "ALC",
    "exchange": "SIX Swiss Exchange / NYSE",
-   "cap": 34.5,
-   "chg12m": -3.3,
+   "cap": 36.2,
+   "chg12m": 1.31,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/alcon/marketcap/",
    "recalls": {
     "class_I": 1,
-    "class_II": 7,
+    "class_II": 1,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Alcon\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Alcon\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -231,8 +231,8 @@
    "name": "ResMed",
    "ticker": "RMD",
    "exchange": "NYSE",
-   "cap": 32.3,
-   "chg12m": -8.85,
+   "cap": 33.1,
+   "chg12m": -6.44,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/resmed/marketcap/",
    "recalls": {
@@ -240,7 +240,7 @@
     "class_II": 0,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"ResMed\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"ResMed\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -258,16 +258,16 @@
    "name": "Dexcom",
    "ticker": "DXCM",
    "exchange": "NASDAQ",
-   "cap": 30.2,
-   "chg12m": 17.23,
+   "cap": 29.6,
+   "chg12m": 44.8,
    "diversified": false,
    "cap_source": "https://companiesmarketcap.com/dexcom/marketcap/",
    "recalls": {
-    "class_I": 1,
+    "class_I": 0,
     "class_II": 4,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Dexcom\"+AND+report_date:[20251102+TO+20261101]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Dexcom\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
