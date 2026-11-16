@@ -1,7 +1,7 @@
 {
- "as_of": "2026-11-09",
- "cap_note": "Market caps: companiesmarketcap.com company pages (fetched 2026-11-09). 12-month change as shown by companiesmarketcap.com.",
- "fda_window": "2025-11-09 to 2026-11-08 (openFDA data last updated 2026-10-28)",
+ "as_of": "2026-11-16",
+ "cap_note": "Market caps: companiesmarketcap.com company pages (last fetched 2026-11-09; the pages could not be read on 2026-11-16, so the 2026-11-09 values are kept). 12-month change as shown by companiesmarketcap.com.",
+ "fda_window": "2025-11-16 to 2026-11-15 (openFDA data last updated 2026-11-04)",
  "companies": [
   {
    "name": "Abbott",
@@ -16,7 +16,7 @@
     "class_II": 10,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Abbott\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Abbott\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [
     {
      "date": "2026-01-23",
@@ -40,7 +40,7 @@
     "class_II": 16,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Intuitive\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Intuitive\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -54,10 +54,10 @@
    "cap_source": "https://companiesmarketcap.com/medtronic/marketcap/",
    "recalls": {
     "class_I": 1,
-    "class_II": 69,
+    "class_II": 73,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Medtronic\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Medtronic\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -71,10 +71,10 @@
    "cap_source": "https://companiesmarketcap.com/stryker-corporation/marketcap/",
    "recalls": {
     "class_I": 0,
-    "class_II": 58,
+    "class_II": 59,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Stryker\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Stryker\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -98,10 +98,10 @@
    "cap_source": "https://companiesmarketcap.com/boston-scientific/marketcap/",
    "recalls": {
     "class_I": 12,
-    "class_II": 83,
+    "class_II": 84,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Boston Scientific\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Boston Scientific\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -118,7 +118,7 @@
     "class_II": 51,
     "class_III": 0
    },
-   "openfda_query": "Sum of three queries: recalling_firm:\"Becton\" (I:10, II:11) + recalling_firm:\"Bard\" (I:3, II:28) + recalling_firm:\"CareFusion\" (I:1, II:12), each with +AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "Sum of three queries: recalling_firm:\"Becton\" (I:10, II:11) + recalling_firm:\"Bard\" (I:3, II:28) + recalling_firm:\"CareFusion\" (I:1, II:12), each with +AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [
     {
      "date": "2026-04-30",
@@ -152,7 +152,7 @@
     "class_II": 33,
     "class_III": 2
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Siemens\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Siemens\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -169,7 +169,7 @@
     "class_II": 1,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Edwards Lifesciences\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Edwards Lifesciences\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -196,7 +196,7 @@
     "class_II": 58,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"GE\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"GE\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -223,7 +223,7 @@
     "class_II": 1,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Alcon\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Alcon\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": []
   },
@@ -240,7 +240,7 @@
     "class_II": 0,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"ResMed\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"ResMed\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
@@ -267,7 +267,7 @@
     "class_II": 4,
     "class_III": 0
    },
-   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Dexcom\"+AND+report_date:[20251109+TO+20261108]&count=classification.exact",
+   "openfda_query": "https://api.fda.gov/device/enforcement.json?search=recalling_firm:\"Dexcom\"+AND+report_date:[20251116+TO+20261115]&count=classification.exact",
    "warning_letters": [],
    "leadership": [
     {
